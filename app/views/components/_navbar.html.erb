@@ -1,7 +1,9 @@
-<section class="navbar">
-  <div class="logo">this is the logo</div>
+<div class="navbar" data-controller="navbar" data-navbar-target="navbar">
+  <div class="logo">logo</div>
 
-  <div class="details">
+
+  <div class="small-frame hidden" data-navbar-target="icon"><i class="fa-solid fa-bars-staggered"></i></div>
+  <div class="details" data-navbar-target="details">
     <div class="cos"> <%= t(:cos) %> </div>
     <div class="workshop"> <%= t(:workshop) %></div>
     <div class="about"> <%= t(:about) %></div>
@@ -9,4 +11,4 @@
     <div class="shop"> <%= t(:shop) %></div>
     <div class="menu"> <%= t(:menu) %> </div>
   </div>
-</section>
+</div>
