@@ -29,4 +29,10 @@
 
 en:
   hello: "Hello world"
+  workshop: "WORKSHOP"
+  about: "ABOUT US"
+  contact: "CONTACT"
+  shop: "BAKERY"
+  menu: "MENU"
   switch_language: "Switch to Spanish"
+  cos: "SHOPPING BAG"

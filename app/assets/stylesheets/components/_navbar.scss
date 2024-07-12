@@ -1,0 +1,12 @@
+.navbar {
+  background-color: transparent;
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.6rem;
+}
+
+.navbar .details{
+  display: flex;
+  gap: 15px;
+  flex-direction: row-reverse;
+}
