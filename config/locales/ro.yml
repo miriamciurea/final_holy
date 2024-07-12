@@ -1,3 +1,9 @@
 ro:
+  cos: "COS"
+  workshop: "ATELIER"
+  about: "DESPRE NOI"
+  contact: "CONTACT"
+  shop: "BRUTARIE"
+  menu: "MENIU"
   hello: "hei lume"
   switch_language: "schimba pe engleza"

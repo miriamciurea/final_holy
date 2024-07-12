@@ -8,12 +8,15 @@
 
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&italic=true&display=swap">
+    <script src="https://kit.fontawesome.com/ae7884d89d.js" crossorigin="anonymous"></script>
 
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
   </head>
 
   <body>
+
+    <%= render "components/navbar" %>
     <%= yield %>
 
     <%= link_to I18n.t('switch_language'), switch_language_path %>
