@@ -1,0 +1,24 @@
+:root {
+  --white: #F8F6F0;
+  --yellow: #EFB73E;
+  --blue: #122855;
+}
+
+$font-weight-thin: 100;
+$font-weight-extra-light: 200;
+$font-weight-light: 300;
+$font-weight-regular: 400;
+$font-weight-medium: 500;
+$font-weight-semi-bold: 600;
+$font-weight-bold: 700;
+$font-weight-extra-bold: 800;
+$font-weight-black: 900;
+
+// Define font family
+$font-family-montserrat: 'Montserrat', sans-serif;
+
+body {
+  font-family: $font-family-montserrat;
+  font-weight: $font-weight-black;
+  background-color: var(--white);
+}
