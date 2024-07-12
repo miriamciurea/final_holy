@@ -8,6 +8,12 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   # root "posts#index"
   root "pages#home"
+  get "about", to: "pages#about_us"
+  get "contact", to: "pages#contact"
+  get "workshop", to: "pages#workshop"
+  # get "privacy", to: "pages#privacy"
+  # get "terms", to: "pages#terms"
+
 
   get 'switch_language', to: 'application#switch_language'
 end
