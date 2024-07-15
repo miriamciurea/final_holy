@@ -2,6 +2,8 @@ source "https://rubygems.org"
 
 gem "cloudinary"
 
+gem 'activestorage'
+
 gem 'sassc'
 
 ruby "3.1.2"
