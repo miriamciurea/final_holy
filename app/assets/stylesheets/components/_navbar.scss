@@ -30,6 +30,20 @@
   margin-right: 5px;
 }
 
+.navbar .logo {
+  background-image: url('https://res.cloudinary.com/debbxeflb/image/upload/v1721034887/color_transparent1_u4ujtg.png');
+  background-size: contain; /* Ensure the image scales correctly */
+  background-repeat: no-repeat; /* Prevent repeating */
+  background-position: center;
+
+  padding: 0;
+  width: 70px;
+  aspect-ratio: 1;
+  position: relative;
+  top: 0;
+  margin: 0;
+}
+
 @media (max-width: 420px){
 
   .navbar .small-frame {
@@ -49,3 +63,168 @@
   }
 
 }
+
+$slider-width: 100px;
+$slider-height: 50px;
+
+.flex-cradle {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  height: 100vh;
+  width: 100%;
+  font-family: Helvetica;
+}
+
+.slider-cradle {
+  display: flex;
+  width: $slider-width;
+  height: $slider-height;
+  background-color: #cacaca; // #ef5350;
+  border-radius: 3px;
+  position: relative;
+  overflow: hidden;
+  box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.4);
+  transition: background-color ease-in-out 0.5s;
+  text-align: center;
+
+  .option-1,
+  .option-2 {
+    width: 50%;
+    height: 100%; // Ensure options take the full height
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-weight: 500;
+  }
+
+  .handle {
+    cursor: pointer;
+    width: $slider-height * 0.92;
+    height: $slider-height * 0.92;
+    border-radius: 3px;
+    position: absolute;
+    background: white;
+    top: $slider-height * 0.04;
+    left: $slider-height * 0.04;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.4);
+    transition: transform cubic-bezier(1, 0.11, 1, 1.04) 400ms;
+  }
+
+  &.is-transitioned {
+    background-color: #cacaca;
+
+    .handle {
+      transform: translateX($slider-width / 2);
+    }
+  }
+}
+
+
+// .switch {
+//   position: relative;
+//   display: inline-block;
+// }
+
+// .switch > span {
+//   position: absolute;
+//   top: 0;
+//   pointer-events: none;
+//   width: 50%;
+//   text-align: center;
+// }
+
+// input.check-toggle-round-flat:checked ~ .off {
+//   color: var(--blue);
+// }
+
+// input.check-toggle-round-flat:checked ~ .on {
+//   color: var(--white);
+// }
+
+// .switch > span.on {
+//   left: 0;
+//   // padding-left: 2px;
+//   color: var(--blue);
+//   width: 100%;
+//   height: 100%;
+// }
+
+// .switch > span.off {
+//   right: 0;
+//   padding-right: 4px;
+//   color: var(--white);
+// }
+
+// .check-toggle {
+//   position: absolute;
+//   // margin-left: -9999px;
+//   visibility: hidden;
+// }
+// .check-toggle + label {
+//   display: block;
+//   position: relative;
+//   cursor: pointer;
+//   outline: none;
+//   -webkit-user-select: none;
+//   -moz-user-select: none;
+//   -ms-user-select: none;
+//   user-select: none;
+// }
+
+// input.check-toggle-round-flat + label {
+//   padding: 2px;
+
+//   width: 97px;
+//   height: 35px;
+
+//   background-color: var(--blue);
+//   -webkit-border-radius: 60px;
+//   -moz-border-radius: 60px;
+//   -ms-border-radius: 60px;
+//   -o-border-radius: 60px;
+//   border-radius: 60px;
+// }
+// input.check-toggle-round-flat + label:before, input.check-toggle-round-flat + label:after {
+//   display: block;
+//   position: absolute;
+//   content: "";
+// }
+
+// input.check-toggle-round-flat + label:before {
+//   // top: 2px;
+//   // left: 2px;
+//   // bottom: 2px;
+//   // right: 2px;
+//   background-color: var(--blue);
+
+//   -moz-border-radius: 60px;
+//   -ms-border-radius: 60px;
+//   -o-border-radius: 60px;
+//   border-radius: 60px;
+// }
+// input.check-toggle-round-flat + label:after {
+//   // top: 4px;
+//   // left: 4px;
+//   // bottom: 4px;
+//   // width: 48px;
+//   background-color: var(--white);
+//   -webkit-border-radius: 52px;
+//   -moz-border-radius: 52px;
+//   -ms-border-radius: 52px;
+//   -o-border-radius: 52px;
+//   border-radius: 52px;
+//   -webkit-transition: margin 0.2s;
+//   -moz-transition: margin 0.2s;
+//   -o-transition: margin 0.2s;
+//   transition: margin 0.2s;
+// }
+
+// input.check-toggle-round-flat:checked + label {
+// }
+
+// input.check-toggle-round-flat:checked + label:after {
+//   // margin-left: 44px;
+// }
