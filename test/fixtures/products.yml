@@ -1,0 +1,21 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyText
+  ingredients: MyText
+  allergens: MyText
+  serving: MyText
+  storage: MyText
+  price: MyString
+  category: MyString
+  part_of: MyString
+
+two:
+  name: MyText
+  ingredients: MyText
+  allergens: MyText
+  serving: MyText
+  storage: MyText
+  price: MyString
+  category: MyString
+  part_of: MyString

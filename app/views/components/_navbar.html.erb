@@ -4,10 +4,10 @@
 
   <div class="small-frame hidden" data-navbar-target="icon"><i class="fa-solid fa-bars-staggered"></i></div>
   <div class="details" data-navbar-target="details">
-    <div class="cos"> <%= t(:cos) %> </div>
-    <div class="workshop"> <%= link_to t(:workshop), workshop_path %></div>
-    <div class="about"><%= link_to t(:about), about_path %></div>
-    <div class="contact"><%= link_to t(:contact), contact_path %> </div>
+    <div class="cos link"> <%= t(:cos) %> </div>
+    <div class="workshop"> <%= link_to t(:workshop), workshop_path, class: "link" %></div>
+    <div class="about"><%= link_to t(:about), about_path, class: "link" %></div>
+    <div class="contact"><%= link_to t(:contact), contact_path, class: "link" %> </div>
     <div class="shop"> <%= t(:shop) %></div>
     <div class="menu"> <%= t(:menu) %> </div>
   </div>

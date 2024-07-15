@@ -283,6 +283,7 @@ PLATFORMS
   x86_64-linux
 
 DEPENDENCIES
+  activestorage
   bootsnap
   capybara
   cloudinary

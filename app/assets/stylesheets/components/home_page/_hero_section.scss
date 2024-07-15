@@ -1,0 +1,81 @@
+// @import "../body";
+
+.hero-home {
+  width: 100vw;
+  height: 100vh;
+  // background-image: url("https://res.cloudinary.com/debbxeflb/image/upload/v1720858542/cake_kgedsq.jpg");
+  background-image: url("https://res.cloudinary.com/debbxeflb/image/upload/v1720864048/INT03715_nrcczd.jpg");
+  background-size: cover;
+  background-position: top;
+
+  filter: brightness(100%);
+}
+
+.hero-home .text {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  justify-content: end;
+  align-items: center;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.hero-home .text1 {
+  font-weight: var(--bold);
+  font-size: 1rem;
+  color: var(--blue);
+}
+
+.hero-home .text2 {
+  font-weight: var(--black);
+  font-size: 2.5rem;
+  color: black;
+}
+
+.hero-home .text3 {
+  font-weight: var(--bold);
+  font-size: 1rem;
+  color: var(--blue);
+}
+
+.hero-content {
+  width: 100%;
+  height: 100%;
+  display: grid;
+  grid-template-rows: 2fr 1fr;
+
+}
+
+.hero-home-svg {
+  position: absolute;
+  bottom: 0px;
+  right: 10%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.hero-home-svg {
+  img {
+    width: 0.1vw;
+    height: 7vh;
+  }
+}
+.svg-text {
+  font-weight: var(--extra-light);
+  color: var(--yellow);
+  font-size: 0.6rem;
+  padding: 5px;
+  white-space: nowrap;
+}
+
+.buttons {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 7%;
+  padding: 20px;
+}
