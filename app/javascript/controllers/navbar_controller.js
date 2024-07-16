@@ -9,9 +9,9 @@ export default class extends Controller {
     this.initialOffsetTop = this.navbarTarget.offsetTop;
     this.scrolled = false;
 
-    console.log(this.initialOffsetTop);
-    console.log(this.iconTarget);
-    console.log(this.detailsTarget);
+    console.log("Initial offset top:", this.initialOffsetTop);
+    console.log("Icon target:", this.iconTarget);
+    console.log("Details target:", this.detailsTarget);
 
     // Initial check
     this.updateNavbarVisibility();
@@ -21,6 +21,8 @@ export default class extends Controller {
 
     // Scroll event listener
     window.addEventListener('scroll', this.scroll.bind(this));
+    // window.addEventListener('scroll', this.scroll.bind(this), { passive: true });
+
   }
 
   disconnect() {
@@ -43,7 +45,7 @@ export default class extends Controller {
 
   updateNavbarVisibility() {
     console.log("Updating navbar visibility");
-    if (window.innerWidth <= 420) {
+    if (window.innerWidth <= 700) {
       this.iconTarget.classList.remove('hidden');
       this.detailsTarget.classList.add('hidden');
     } else {
@@ -52,3 +54,5 @@ export default class extends Controller {
     }
   }
 }
+
+// 700
