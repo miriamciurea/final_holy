@@ -4,11 +4,15 @@
   width: 100vw;
   height: 100vh;
   // background-image: url("https://res.cloudinary.com/debbxeflb/image/upload/v1720858542/cake_kgedsq.jpg");
-  background-image: url("https://res.cloudinary.com/debbxeflb/image/upload/v1720864048/INT03715_nrcczd.jpg");
+  background-image: url("https://res.cloudinary.com/debbxeflb/image/upload/v1721113273/DSC00541_ojasiu.jpg");
   background-size: cover;
   background-position: top;
 
   filter: brightness(100%);
+
+  background-size: 170%;
+  background-position-x: calc(50% + 80px);
+  background-position-y: center;
 }
 
 .hero-home .text {
