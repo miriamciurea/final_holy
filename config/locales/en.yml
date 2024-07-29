@@ -36,8 +36,8 @@ en:
   menu: "MENU"
   switch_language: "Switch to Spanish"
   cos: "SHOPPING BAG"
-  feature_1: "<strong>QUALITY</strong> and <br><strong>NUTRITION</strong> have lagged <br>%{way_behind} in baking"
-  feature_2: "and we set out to change this and offer the <strong>BEST</strong> products<br> from a <em>nutritional</em> point of view, <strong>%{not_just_taste}</strong>"
+  feature_1: "<strong>QUALITY</strong> and <br><strong>NUTRITION</strong> have lagged <br>%{way_behind} in baking, and we"
+  feature_2: " set out to change this and offer the <strong>BEST</strong> products from a <em>nutritional</em> point of view, <strong>%{not_just_taste}</strong>"
   placeholders:
     not_just_taste: "not just taste."
     way_behind: "WAY BEHIND"

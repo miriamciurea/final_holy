@@ -7,8 +7,8 @@ ro:
   menu: "MENIU"
   hello: "hei lume"
   switch_language: "schimba pe engleza"
-  feature_1: "<strong>CALITATEA</strong> si <br><strong>NUTRITIA</strong> au ramas <br>%{way_behind} in panificatie"
-  feature_2: "iar noi am pornit la drum să schimbăm aceasta și să oferim <strong>CELE MAI BUNE</strong> produse din <em>punct de vedere</em> nutritiv, <strong>%{not_just_taste}</strong>"
+  feature_1: "<strong>CALITATEA</strong> si <br><strong>NUTRITIA</strong> au ramas <br>%{way_behind} in panificatie, iar noi"
+  feature_2: " am pornit la drum să schimbăm aceasta și să oferim <strong>CELE MAI BUNE</strong> produse din <em>punct de vedere</em> nutritiv, <strong>%{not_just_taste}</strong>"
   placeholders:
     way_behind: "IN URMA"
     not_just_taste: "nu doar al gustului."
