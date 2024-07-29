@@ -1,18 +1,37 @@
-<div class="navbar" data-controller="navbar" data-navbar-target="navbar">
-  <%= link_to root_path do %>
-    <div class="logo"></div>
-  <% end %>
+<div data-controller="navbar">
+  <div class="navbar" data-navbar-target="navbar">
+    <%= link_to root_path do %>
+      <div class="logo"></div>
+    <% end %>
 
+    <div class="small-frame hidden" data-navbar-target="icon" data-action="click->navbar#toggleSidebar">
+      <i class="fa-solid fa-bars-staggered icon"></i>
+    </div>
+    <div class="details" data-navbar-target="details">
+        <div class="lang"><%= link_to "EN", switch_language_path, class: "link" %></div>
+        <div class="lang"><%= link_to "RO", switch_language_path, class: "link" %></div>
+        <div class="cos"> <%= t(:cos) %> </div>
+        <div class="workshop"> <%= link_to t(:workshop), workshop_path, class: "link" %></div>
+        <div class="about"><%= link_to t(:about), about_path, class: "link" %></div>
+        <div class="contact"><%= link_to t(:contact), contact_path, class: "link" %> </div>
+        <div class="shop"> <%= t(:shop) %></div>
+        <div class="menu"> <%= t(:menu) %> </div>
+    </div>
+  </div>
 
-  <div class="small-frame hidden" data-navbar-target="icon"><i class="fa-solid fa-bars-staggered"></i></div>
-  <div class="details" data-navbar-target="details">
-    <div class="lang"><%= link_to "EN", switch_language_path, class: "link" %></div>
-    <div class="lang"><%= link_to "RO", switch_language_path, class: "link" %></div>
-    <div class="cos"> <%= t(:cos) %> </div>
-    <div class="workshop"> <%= link_to t(:workshop), workshop_path, class: "link" %></div>
-    <div class="about"><%= link_to t(:about), about_path, class: "link" %></div>
-    <div class="contact"><%= link_to t(:contact), contact_path, class: "link" %> </div>
-    <div class="shop"> <%= t(:shop) %></div>
-    <div class="menu"> <%= t(:menu) %> </div>
+  <div class="sidebar hidden" data-navbar-target="sidebar">
+    <div class="sidebar-content">
+      <div class="close-icon" data-action="click->navbar#closeSidebar">×</div>
+      <div class="details">
+        <div class="lang"><%= link_to "EN", switch_language_path, class: "link" %></div>
+        <div class="lang"><%= link_to "RO", switch_language_path, class: "link" %></div>
+        <div class="cos"> <%= t(:cos) %> </div>
+        <div class="workshop"> <%= link_to t(:workshop), workshop_path, class: "link" %></div>
+        <div class="about"><%= link_to t(:about), about_path, class: "link" %></div>
+        <div class="contact"><%= link_to t(:contact), contact_path, class: "link" %> </div>
+        <div class="shop"> <%= t(:shop) %></div>
+        <div class="menu"> <%= t(:menu) %> </div>
+      </div>
+    </div>
   </div>
 </div>

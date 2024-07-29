@@ -1,8 +1,8 @@
-import { Controller } from "@hotwired/stimulus"
+import { Controller } from "@hotwired/stimulus";
 
 // Connects to data-controller="navbar"
 export default class extends Controller {
-  static targets = ["navbar", "icon", "details"]
+  static targets = ["navbar", "icon", "details", "sidebar"]
 
   connect() {
     console.log("Controller connected");
@@ -12,6 +12,7 @@ export default class extends Controller {
     console.log("Initial offset top:", this.initialOffsetTop);
     console.log("Icon target:", this.iconTarget);
     console.log("Details target:", this.detailsTarget);
+    console.log("Sidebar target:", this.sidebarTarget);
 
     // Initial check
     this.updateNavbarVisibility();
@@ -21,8 +22,9 @@ export default class extends Controller {
 
     // Scroll event listener
     window.addEventListener('scroll', this.scroll.bind(this));
-    // window.addEventListener('scroll', this.scroll.bind(this), { passive: true });
 
+    // Update visibility on load
+    this.updateNavbarVisibility();
   }
 
   disconnect() {
@@ -45,14 +47,27 @@ export default class extends Controller {
 
   updateNavbarVisibility() {
     console.log("Updating navbar visibility");
-    if (window.innerWidth <= 700) {
+    if (window.innerWidth <= 730) {
       this.iconTarget.classList.remove('hidden');
       this.detailsTarget.classList.add('hidden');
+      this.sidebarTarget.classList.add('hidden');
     } else {
       this.iconTarget.classList.add('hidden');
       this.detailsTarget.classList.remove('hidden');
+      this.sidebarTarget.classList.add('hidden');
     }
   }
+
+  toggleSidebar() {
+    this.sidebarTarget.classList.toggle('open');
+    this.sidebarTarget.classList.remove('hidden');
+  }
+
+  closeSidebar() {
+    // this.sidebarTarget.classList.remove('open');
+    this.toggleSidebar();
+  }
 }
+
 
 // 700
