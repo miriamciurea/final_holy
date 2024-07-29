@@ -1,0 +1,44 @@
+.photo-card {
+  img {
+    width: calc((100vw - 170px) / 3);
+    box-shadow: 5px 5px 2px rgba(18, 40, 85, 0.25);
+    border-radius: 5px;
+  }
+}
+
+.cards {
+  display: flex;
+  gap: 25px;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  justify-content: center;
+}
+
+.name {
+  font-weight: var(--semi-bold);
+  text-shadow: 5px 5px 2px rgba(18, 40, 85, 0.25);
+}
+
+
+@media (max-width: 767px) {
+  .cards{
+    padding: 30px 20px;
+
+  }
+
+  .photo-card img {
+    width: calc((100vw - 90px) / 3);
+  }
+
+  .name {
+    font-size: 0.7rem;
+  }
+}
