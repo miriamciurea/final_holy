@@ -47,7 +47,7 @@ export default class extends Controller {
 
   updateNavbarVisibility() {
     console.log("Updating navbar visibility");
-    if (window.innerWidth <= 420) {
+    if (window.innerWidth <= 730) {
       this.iconTarget.classList.remove('hidden');
       this.detailsTarget.classList.add('hidden');
       this.sidebarTarget.classList.add('hidden');

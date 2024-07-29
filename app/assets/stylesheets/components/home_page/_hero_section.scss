@@ -83,3 +83,32 @@
   gap: 7%;
   padding: 20px;
 }
+
+@media (max-width: 836px) {
+  .hero-home {
+    background-repeat: no-repeat;
+    background-size: 200%;
+    background-position: 27% bottom;
+  }
+}
+
+@media (max-width: 730px) {
+  .hero-home{
+    background-repeat: no-repeat;
+    background-size: 350%;
+    background-position: 27% bottom;
+  }
+
+  .hero-home .text1, .hero-home .text3 {
+    font-size: 0.7rem;
+  }
+
+  .button {
+    padding: 5px 20px;
+    font-size: 0.8rem;
+  }
+
+  .hero-home .text2 {
+    font-size: 2rem;
+  }
+}
