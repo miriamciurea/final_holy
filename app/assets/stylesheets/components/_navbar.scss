@@ -69,50 +69,25 @@
 
 .navbar .logo {
   background-image: url('https://res.cloudinary.com/debbxeflb/image/upload/v1721034887/color_transparent1_u4ujtg.png');
-  background-size: contain; /* Ensure the image scales correctly */
-  background-repeat: no-repeat; /* Prevent repeating */
+  background-size: contain;
+  background-repeat: no-repeat;
   background-position: center;
 
   padding: 0;
-  width: 70px;
+  width: 50px;
   aspect-ratio: 1;
   position: relative;
   top: 0;
   margin: 0;
 }
 
-// @media (max-width: 420px){
-
-//   // .navbar .small-frame {
-//   //   position: fixed;
-//   //   top: 5px;
-//   //   right: 5px;
-//   // }
-
-//   .navbar .logo, .small-frame i {
-//     font-size: 1.3rem;
-//   }
-// }
-
-// @media (max-width: 507px) {
-//   .navbar {
-//     font-size: 0.5rem;
-//   }
-
-// }
-
 @media (max-width: 730px) {
-  // .navbar .small-frame {
-  //   position: fixed;
-  //   top: 15px;
-  //   right: 15px;
-  //   font-size: 1.5rem;
-  // }
 
   .icon {
     font-size: 1.5rem;
     padding: 10px;
     color: var(--yellow);
+    border: 1px solid var(--yellow);
   }
 
   .navbar .details {
