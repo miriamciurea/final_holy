@@ -3,16 +3,18 @@
 <div class="feature">
 
   <div class="f1">
-    <%= t(:feature_1,
-          way_behind: content_tag(:span, t('placeholders.way_behind'), class: "thin-font")).html_safe %>
-    </div>
+    <div>
+      <%= t(:feature_1,
+            way_behind: content_tag(:span, t('placeholders.way_behind'), class: "thin-font")).html_safe %>
+      </div>
+  </div>
 
   <div class="f2">
     <%= image_tag 'feature.svg', alt: 'aesthetic line' %>
   </div>
 
   <div class="f3">
-    <div class="">
+    <div class="um">
     <%= t(:feature_2,
           not_just_taste: content_tag(:span, t('placeholders.not_just_taste'), class: "not-just-taste")).html_safe %>
     </div>
