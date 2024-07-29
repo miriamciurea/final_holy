@@ -15,3 +15,6 @@ ro:
   breads: "PÂINE"
   sweets: "DULCIURI"
   pastries: "PATISERIE"
+  where: "UNDE?"
+  when: "CÂND?"
+  location: "<em>Floreasca</em> strada Constantin Aricescu, numărul 50A, București, România"
