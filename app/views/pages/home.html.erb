@@ -69,3 +69,54 @@
   </div>
 
 </div>
+
+<div class="order">
+
+  <div class="order-text">
+    <div class="order-first">
+      <%= t(:order_1,
+            joy: content_tag(:span, t('placeholders.joy'), class: "joy")).html_safe %>
+    </div>
+    <div class="order-second">
+      <%= t(:order_2,
+            our_products: content_tag(:span, link_to(t('placeholders.our_products'), about_path)),
+            contact_us: content_tag(:span, link_to(t('placeholders.contact_us'), about_path))).html_safe %>
+    </div>
+    <div class="order-buttons">
+      <%= link_to t('placeholders.our_products').upcase, about_path, class: "link" %>
+      <%= link_to t('placeholders.contact_us').upcase, about_path, class: "link" %>
+    </div>
+  </div>
+
+  <div class="footer-details">
+    <div class="f-comp">
+      <div class="f-comp-title">
+        <%= t(:contact) %>
+      </div>
+      <a href="https://www.instagram.com/holybakerybucharest/" class="link">INSTAGRAM</a>
+      <a href="https://www.facebook.com/HolyBakeryBucharest" class="link">FACEBOOK</a>
+    </div>
+    <div class="f-comp">
+      <div class="f-comp-title">
+        <%= t(:get_in_touch) %>
+      </div>
+      +1234567890
+      example@example.com
+    </div>
+    <div class="f-comp">
+      <div class="f-comp-title">
+        <%= t(:real_shop) %>
+      </div>
+        <%= link_to t(:shop), about_path, class: "link" %>
+        <%= link_to t(:menu), about_path, class: "link" %>
+    </div>
+    <div class="f-comp">
+      <div class="f-comp-title">HOLY BAKERY</div>
+        <%= link_to t(:about), about_path, class: "link" %>
+        <%= link_to t(:terms), about_path, class: "link" %>
+        <%= link_to t(:privacy), about_path, class: "link" %>
+    </div>
+    <div class="f-comp">emailll</div>
+  </div>
+
+</div>
