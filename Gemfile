@@ -4,6 +4,8 @@ gem "cloudinary"
 
 gem 'activestorage'
 
+gem "devise"
+
 gem 'sassc'
 
 ruby "3.1.2"
