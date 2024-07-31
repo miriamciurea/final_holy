@@ -16,7 +16,18 @@
 
   <body>
 
+
     <%= render "components/navbar" %>
+
+
+    <% if notice || alert %>
+      <div class="flash">
+        <span class="close-btn" onclick="this.parentElement.style.display='none';">&times;</span>
+        <%= notice %>
+        <%= alert %>
+      </div>
+    <% end %>
+
     <%= yield %>
 
     <%#= link_to I18n.t('switch_language'), switch_language_path %>
