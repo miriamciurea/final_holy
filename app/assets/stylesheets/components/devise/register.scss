@@ -37,7 +37,24 @@
 
     &:focus {
       outline: none;
+      background-color: var(--yellow);
+      color: var(--blue);
+
+      &::placeholder {
+        color: var(--white);
+      }
     }
+
+  input:-internal-autofill-selected {
+    background-color: black;
+  }
+
+  }
+
+  &:focus {
+    outline: none;
+    background-color: var(--yellow);
+    color: var(--blue);
   }
 
   .button {
@@ -146,4 +163,51 @@
   align-items: center;
   gap: 10px;
   margin: 20px;
+}
+
+.flash {
+  position: fixed;
+  top: 40px;
+  right: 20px;
+  background-color: var(--white); /* Light yellow-green for notice */
+  color: var(--blue); /* Dark green text for notice */
+  padding: 15px;
+  border-radius: 5px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+  width: 300px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 16px;
+  transition: opacity 0.3s ease; /* Optional fade-out transition */
+}
+
+.flash-alert {
+  background-color: #ffcdd2; /* Light red for alert */
+  color: #b71c1c; /* Dark red text for alert */
+}
+
+.flash .close-btn {
+  color: #aaa;
+  font-size: 20px;
+  font-weight: bold;
+  cursor: pointer;
+  margin-left: 15px;
+}
+
+.flash .close-btn:hover {
+  color: #000;
+}
+
+@media (max-width: 700px) {
+  .register-content {
+    width: 90%;
+  }
+}
+
+@media (max-width: 400px) {
+  .field {
+    width: 80%;
+  }
 }

@@ -8,6 +8,19 @@
       <i class="fa-solid fa-bars-staggered icon"></i>
     </div>
     <div class="details" data-navbar-target="details">
+
+        <% unless user_signed_in? %>
+        <div class="menu">
+          <%= link_to 'LOG IN', new_user_session_path, class: "link" %>
+        </div>
+        <% end %>
+
+        <% if user_signed_in? %>
+        <div class="menu">
+            <%= link_to "Log out", destroy_user_session_path, data: {turbo_method: :delete}, class: "link" %>
+        </div>
+        <% end %>
+
         <div class="lang"><%= link_to "EN", switch_language_path, class: "link" %></div>
         <div class="lang"><%= link_to "RO", switch_language_path, class: "link" %></div>
         <div class="cos"> <%= t(:cos) %> </div>
@@ -16,6 +29,7 @@
         <div class="contact"><%= link_to t(:contact), contact_path, class: "link" %> </div>
         <div class="shop"> <%= t(:shop) %></div>
         <div class="menu"> <%= t(:menu) %> </div>
+
     </div>
   </div>
 
@@ -25,6 +39,18 @@
       <div class="details">
         <div class="lang"><%= link_to "EN", switch_language_path, class: "link" %></div>
         <div class="lang"><%= link_to "RO", switch_language_path, class: "link" %></div>
+
+        <% unless user_signed_in? %>
+        <div class="menu">
+          <%= link_to 'LOG IN', new_user_session_path, class: "link" %>
+        </div>
+        <% end %>
+
+        <% if user_signed_in? %>
+        <div class="menu">
+          <%= link_to 'LOG OUT', destroy_user_session_path, method: :delete, class: "link" %>
+        </div>
+        <% end %>
         <div class="cos"> <%= t(:cos) %> </div>
         <div class="workshop"> <%= link_to t(:workshop), workshop_path, class: "link" %></div>
         <div class="about"><%= link_to t(:about), about_path, class: "link" %></div>

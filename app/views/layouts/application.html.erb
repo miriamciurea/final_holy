@@ -19,8 +19,14 @@
 
     <%= render "components/navbar" %>
 
-    <%= notice %>
-    <%= alert %>
+
+    <% if notice || alert %>
+      <div class="flash">
+        <span class="close-btn" onclick="this.parentElement.style.display='none';">&times;</span>
+        <%= notice %>
+        <%= alert %>
+      </div>
+    <% end %>
 
     <%= yield %>
 

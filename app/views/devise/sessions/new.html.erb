@@ -6,22 +6,6 @@
     <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
 
       <div class="field">
-        <%= f.text_field :first_name, autofocus: true, autocomplete: "first_name", placeholder: "FIRST NAME" %>
-      </div>
-
-      <div class="field">
-        <%= f.text_field :last_name, autofocus: true, autocomplete: "last_name", placeholder: "LAST NAME" %>
-      </div>
-
-      <div class="field">
-        <%= f.text_field :address, autofocus: true, autocomplete: "address", placeholder: "ADDRESS" %>
-      </div>
-
-      <div class="field">
-        <%= f.text_field :phone, autofocus: true, autocomplete: "phone", placeholder: "PHONE NUMBER" %>
-      </div>
-
-      <div class="field">
         <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "YOUR EMAIL ADDRESS" %>
       </div>
 
