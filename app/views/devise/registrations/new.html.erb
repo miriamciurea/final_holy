@@ -15,8 +15,9 @@
         <%= f.text_field :last_name, autocomplete: "last_name", placeholder: "LAST NAME" %>
       </div>
 
-      <div class="field">
-        <%= f.text_field :address, autocomplete: "address", placeholder: "ADDRESS" %>
+      <div class="field" data-controller="address-autocomplete">
+        <%= f.text_field :address, id: "address-input", placeholder: "ADDRESS", data: { target: "address-autocomplete.input" } %>
+        <div id="suggestions" data-address-autocomplete-target="suggestions" class="suggestions-box"></div>
       </div>
 
       <div class="field">

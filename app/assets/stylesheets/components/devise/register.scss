@@ -200,6 +200,28 @@
   color: #000;
 }
 
+.suggestions-box {
+  position: absolute;
+  background-color: var(--white);
+  border: 1px solid var(--yellow);
+  color: var(--blue);
+  max-height: 150px;
+  overflow-y: auto;
+  width: 50%;
+  z-index: 1000;
+}
+
+.suggestion-item {
+  padding: 8px;
+  border-bottom: 1px solid var(--yellow);
+  cursor: pointer;
+}
+
+.suggestion-item:hover {
+  background-color: #f0f0f0;
+}
+
+
 @media (max-width: 700px) {
   .register-content {
     width: 90%;

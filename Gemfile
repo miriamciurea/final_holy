@@ -6,6 +6,8 @@ gem 'activestorage'
 
 gem "devise"
 
+gem "geocoder"
+
 gem 'sassc'
 
 ruby "3.1.2"
