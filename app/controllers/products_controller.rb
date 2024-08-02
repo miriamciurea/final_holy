@@ -43,12 +43,17 @@ class ProductsController < ApplicationController
   def product_params
     params.require(:product).permit(
       :name,
+      :name_en,
       :price,
       :storage,
+      :storage_en,
       :serving,
+      :serving_en,
       :part_of,
       :ingredients,
+      :ingredients_en,
       :allergens,
+      :allergens_en,
       :order,
       category: [],  # Permit category as an array if it's a set of multiple selections
       photos: []  # Permit photos as an array
