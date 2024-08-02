@@ -2,7 +2,7 @@ class Product < ApplicationRecord
 
   has_many_attached :photos
 
-  validates :name, :price, :storage, :serving, :category, :part_of, :ingredients, :allergens, presence: true
+  validates :name, :name_en, :price, :storage, :storage_en, :serving, :serving_en, :category, :part_of, :ingredients, :ingredients_en, :allergens, :allergens_en, presence: true
 
   CATEGORIES = [
     "Gluten Free",

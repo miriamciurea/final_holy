@@ -1,6 +1,6 @@
 .prod {
   background-image: url('product-new.JPG');
-  height: 110vh;
+  height: 180vh;
 
   .custom-checkbox {
     display: none; /* Hide the default checkbox */
@@ -49,9 +49,18 @@
     box-shadow: 0 0 3px var(--blue); /* Ensure variables are defined or use direct color values */
   }
 
+  .field-label-text {
+    font-size: 0.8rem;
+    // margin: 5px 0px;
 
+  }
 
-
+  select, option {
+    background: rgba(0, 0, 0, 0.1);
+    padding: 10px;
+    color: var(--white);
+    border-radius: 5px;
+  }
 
 
 }

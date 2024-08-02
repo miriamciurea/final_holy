@@ -17,37 +17,75 @@
         </div>
       <% end %>
 
+      <h4>Romanian fields</h4>
+
       <div class="field">
-        <%= form.text_field :name, placeholder: "NAME" %>
+        <%= form.text_field :name, placeholder: "NUME" %>
       </div>
+
+      <div class="field">
+        <div class="field-label-text"><%= form.label :ingredients, "Ingrediente (separate prin virgula)" %></div>
+        <%= form.text_field :ingredients, value: @product.ingredients, id: "ingredients-input", placeholder: "FAINA, APA, SARE" %>
+      </div>
+
+      <div class="field">
+        <div class="field-label-text"><%= form.label :allergens, "Alergeni (separate prin virgula)" %></div>
+        <%= form.text_field :allergens, value: @product.allergens, id: "allergens-input", placeholder: "GLUTEN, SUSAN, .." %>
+      </div>
+
+      <div class="field">
+        <%= form.text_field :storage, placeholder: "PASTRARE" %>
+      </div>
+
+      <div class="field">
+        <%= form.text_field :serving, placeholder: "SERVIRE" %>
+      </div>
+
+      <h4>English fields</h4>
+
+      <div class="field">
+        <%= form.text_field :name_en, placeholder: "NAME" %>
+      </div>
+
+      <div class="field">
+        <div class="field-label-text"><%= form.label :ingredients_en, "Ingredients (comma-separated)" %></div>
+        <%= form.text_field :ingredients_en, value: @product.ingredients_en, id: "ingredients-input", placeholder: "FLOUR, WATER, SALT" %>
+      </div>
+
+      <div class="field">
+        <div class="field-label-text"><%= form.label :allergens_en, "Allergens (comma-separated)" %></div>
+        <%= form.text_field :allergens_en, value: @product.allergens_en, id: "allergens-input", placeholder: "GLUTEN, SESAME, .." %>
+      </div>
+
+      <div class="field">
+        <%= form.text_field :storage_en, placeholder: "STORAGE" %>
+      </div>
+
+      <div class="field">
+        <%= form.text_field :serving_en, placeholder: "SERVING" %>
+      </div>
+
+      <h4>Both fields</h4>
 
       <div class="field">
         <%= form.number_field :price, step: 0.01, placeholder: "PRICE" %>
       </div>
 
       <div class="field">
-        <%= form.text_field :storage, placeholder: "STORAGE" %>
-      </div>
-
-      <div class="field">
-        <%= form.text_field :serving, placeholder: "SERVING" %>
-      </div>
-
-      <div class="field">
         <%= form.label :category, "Select Categories" %>
         <div class="custom-checkbox-container-prod">
-          <%= check_box_tag 'product[category][]', 'Gluten Free', @product.category&.include?('Gluten Free'), id: 'product_category_gluten_free', class: 'custom-checkbox' %>
+          <%= check_box_tag 'product[category][]', t(:gluten_free), @product.category&.include?(t(:gluten_free)), id: 'product_category_gluten_free', class: 'custom-checkbox' %>
           <label for="product_category_gluten_free">
             <span class="checkmark-prod"></span>
-            Gluten Free
+            <%= t(:gluten_free).upcase %>
           </label>
         </div>
 
         <div class="custom-checkbox-container-prod">
-          <%= check_box_tag 'product[category][]', 'Bread', @product.category&.include?('Bread'), id: 'product_category_bread', class: 'custom-checkbox' %>
+          <%= check_box_tag 'product[category][]', t(:breads), @product.category&.include?(t(:breads)), id: 'product_category_bread', class: 'custom-checkbox' %>
           <label for="product_category_bread">
             <span class="checkmark-prod"></span>
-            Bread
+              <%= t(:breads) %>
           </label>
         </div>
 
@@ -55,69 +93,49 @@
           <%= check_box_tag 'product[category][]', 'Artisan', @product.category&.include?('Artisan'), id: 'product_category_artisan', class: 'custom-checkbox' %>
           <label for="product_category_artisan">
             <span class="checkmark-prod"></span>
-            Artisan
+            ARTISAN
           </label>
         </div>
 
         <div class="custom-checkbox-container-prod">
-          <%= check_box_tag 'product[category][]', 'Cookies', @product.category&.include?('Cookies'), id: 'product_category_cookies', class: 'custom-checkbox' %>
+          <%= check_box_tag 'product[category][]', t(:cookies), @product.category&.include?(t(:cookies)), id: 'product_category_cookies', class: 'custom-checkbox' %>
           <label for="product_category_cookies">
             <span class="checkmark-prod"></span>
-            Cookies
+            <%= t(:cookies).upcase %>
           </label>
         </div>
 
         <div class="custom-checkbox-container-prod">
-          <%= check_box_tag 'product[category][]', 'Pastry', @product.category&.include?('Pastry'), id: 'product_category_pastry', class: 'custom-checkbox' %>
+          <%= check_box_tag 'product[category][]', t(:pastries), @product.category&.include?(t(:pastries)), id: 'product_category_pastry', class: 'custom-checkbox' %>
           <label for="product_category_pastry">
             <span class="checkmark-prod"></span>
-            Pastry
+            <%= t(:pastries) %>
           </label>
         </div>
 
         <div class="custom-checkbox-container-prod">
-          <%= check_box_tag 'product[category][]', 'Sweets', @product.category&.include?('Sweets'), id: 'product_category_sweets', class: 'custom-checkbox' %>
+          <%= check_box_tag 'product[category][]', t(:sweets), @product.category&.include?(t(:sweets)), id: 'product_category_sweets', class: 'custom-checkbox' %>
           <label for="product_category_sweets">
             <span class="checkmark-prod"></span>
-            Sweets
+            <%= t(:sweets) %>
           </label>
         </div>
       </div>
 
       <div class="field">
-        <%= form.label :part_of, "Part Of" %>
-        <%= form.select :part_of, options_for_select(["shop", "menu"], @product.part_of), prompt: "Select Shop or Menu" %>
+        <%= form.select :part_of, options_for_select(["SHOP", "MENU"], @product.part_of), prompt: "SELECT SHOP OR MENU", class: "styled-select" %>
       </div>
 
-      <div class="field">
-        <%= form.label :ingredients, "Ingredients (comma-separated)" %>
-        <%= form.text_field :ingredients, value: @product.ingredients, id: "ingredients-input" %>
-      </div>
 
-      <div class="field">
-        <%= form.label :allergens, "Allergens (comma-separated)" %>
-        <%= form.text_field :allergens, value: @product.allergens, id: "allergens-input" %>
-      </div>
 
-      <script>
-        document.addEventListener("turbo:load", function() {
-          document.querySelector("#ingredients-input").addEventListener("change", function() {
-            this.value = this.value.split(",").map(item => item.trim()).join(", ");
-          });
-
-          document.querySelector("#allergens-input").addEventListener("change", function() {
-            this.value = this.value.split(",").map(item => item.trim()).join(", ");
-          });
-        });
-      </script>
 
       <div class="field">
         <%= form.label :photos %>
-        <%= form.file_field :photos, multiple: true, direct_upload: true %>
+        <%= form.file_field :photos, multiple: true, direct_upload: true, id: "photo-input" %>
       </div>
 
       <div class="actions">
-        <%= form.submit %>
+        <%= form.submit "CREATE NEW PRODUCT", class: "button", style: "margin-bottom: 20px;" %>
       </div>
     <% end %>
 
