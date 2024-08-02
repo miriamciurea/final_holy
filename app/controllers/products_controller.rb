@@ -41,8 +41,18 @@ class ProductsController < ApplicationController
   private
 
   def product_params
-    params.require(:product).permit(:name, :price, :storage, :serving, :category, :part_of, :ingredients, :allergens, :order)
-  end
+    params.require(:product).permit(
+      :name,
+      :price,
+      :storage,
+      :serving,
+      :part_of,
+      :ingredients,
+      :allergens,
+      :order,
+      category: [],  # Permit category as an array if it's a set of multiple selections
+      photos: []  # Permit photos as an array
+    )  end
 
   def set_product
     @product = Product.find(params[:id])

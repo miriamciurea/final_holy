@@ -35,12 +35,53 @@
 
       <div class="field">
         <%= form.label :category, "Select Categories" %>
-        <% Product::CATEGORIES.each do |category| %>
-          <div>
-            <%= check_box_tag 'product[category][]', category, @product.category&.include?(category) %>
-            <%= label_tag "product_category_#{category}", category %>
-          </div>
-        <% end %>
+        <div class="custom-checkbox-container-prod">
+          <%= check_box_tag 'product[category][]', 'Gluten Free', @product.category&.include?('Gluten Free'), id: 'product_category_gluten_free', class: 'custom-checkbox' %>
+          <label for="product_category_gluten_free">
+            <span class="checkmark-prod"></span>
+            Gluten Free
+          </label>
+        </div>
+
+        <div class="custom-checkbox-container-prod">
+          <%= check_box_tag 'product[category][]', 'Bread', @product.category&.include?('Bread'), id: 'product_category_bread', class: 'custom-checkbox' %>
+          <label for="product_category_bread">
+            <span class="checkmark-prod"></span>
+            Bread
+          </label>
+        </div>
+
+        <div class="custom-checkbox-container-prod">
+          <%= check_box_tag 'product[category][]', 'Artisan', @product.category&.include?('Artisan'), id: 'product_category_artisan', class: 'custom-checkbox' %>
+          <label for="product_category_artisan">
+            <span class="checkmark-prod"></span>
+            Artisan
+          </label>
+        </div>
+
+        <div class="custom-checkbox-container-prod">
+          <%= check_box_tag 'product[category][]', 'Cookies', @product.category&.include?('Cookies'), id: 'product_category_cookies', class: 'custom-checkbox' %>
+          <label for="product_category_cookies">
+            <span class="checkmark-prod"></span>
+            Cookies
+          </label>
+        </div>
+
+        <div class="custom-checkbox-container-prod">
+          <%= check_box_tag 'product[category][]', 'Pastry', @product.category&.include?('Pastry'), id: 'product_category_pastry', class: 'custom-checkbox' %>
+          <label for="product_category_pastry">
+            <span class="checkmark-prod"></span>
+            Pastry
+          </label>
+        </div>
+
+        <div class="custom-checkbox-container-prod">
+          <%= check_box_tag 'product[category][]', 'Sweets', @product.category&.include?('Sweets'), id: 'product_category_sweets', class: 'custom-checkbox' %>
+          <label for="product_category_sweets">
+            <span class="checkmark-prod"></span>
+            Sweets
+          </label>
+        </div>
       </div>
 
       <div class="field">
@@ -50,12 +91,12 @@
 
       <div class="field">
         <%= form.label :ingredients, "Ingredients (comma-separated)" %>
-        <%= form.text_field :ingredients, value: (@product.ingredients || []).join(", "), id: "ingredients-input" %>
+        <%= form.text_field :ingredients, value: @product.ingredients, id: "ingredients-input" %>
       </div>
 
       <div class="field">
         <%= form.label :allergens, "Allergens (comma-separated)" %>
-        <%= form.text_field :allergens, value: (@product.allergens || []).join(", "), id: "allergens-input" %>
+        <%= form.text_field :allergens, value: @product.allergens, id: "allergens-input" %>
       </div>
 
       <script>
