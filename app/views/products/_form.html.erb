@@ -49,12 +49,12 @@
 
       <div class="field">
         <div class="field-label-text"><%= form.label :ingredients_en, "Ingredients (comma-separated)" %></div>
-        <%= form.text_field :ingredients_en, value: @product.ingredients, id: "ingredients-input", placeholder: "FLOUR, WATER, SALT" %>
+        <%= form.text_field :ingredients_en, value: @product.ingredients_en, id: "ingredients-input", placeholder: "FLOUR, WATER, SALT" %>
       </div>
 
       <div class="field">
         <div class="field-label-text"><%= form.label :allergens_en, "Allergens (comma-separated)" %></div>
-        <%= form.text_field :allergens_en, value: @product.allergens, id: "allergens-input", placeholder: "GLUTEN, SESAME, .." %>
+        <%= form.text_field :allergens_en, value: @product.allergens_en, id: "allergens-input", placeholder: "GLUTEN, SESAME, .." %>
       </div>
 
       <div class="field">
@@ -101,7 +101,7 @@
           <%= check_box_tag 'product[category][]', t(:cookies), @product.category&.include?(t(:cookies)), id: 'product_category_cookies', class: 'custom-checkbox' %>
           <label for="product_category_cookies">
             <span class="checkmark-prod"></span>
-            <%= t(:cookies) %>
+            <%= t(:cookies).upcase %>
           </label>
         </div>
 
