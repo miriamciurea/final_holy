@@ -1,6 +1,37 @@
-<h1>Products</h1>
-<ul>
-  <% @products.each do |product| %>
-    <li><%= link_to product.name, product_path(product) %></li>
-  <% end %>
-</ul>
+<div class="products-hero">
+  <div class="products-content">
+    <div class="hero-products-text">
+      <%= t(:products_hero,
+              treat: content_tag(:span, t("placeholders.treat"), class: 'treat')).upcase.html_safe %>
+    </div>
+
+    <div class="hero-products-sub">
+      <%= t(:products_sub) %>
+    </div>
+
+  </div>
+</div>
+
+
+
+<% @products.each do |product| %>
+  <div class="product">
+    <h2><%= product.name %> (<%= product.name_en %>)</h2>
+    <p><strong>Ingredients:</strong> <%= product.ingredients %></p>
+    <p><strong>Allergens:</strong> <%= product.allergens %></p>
+    <p><strong>Serving:</strong> <%= product.serving %> (<%= product.serving_en %>)</p>
+    <p><strong>Storage:</strong> <%= product.storage %> (<%= product.storage_en %>)</p>
+    <p><strong>Price:</strong> $<%= product.price %></p>
+    <p><strong>Category:</strong> <%= product.category %></p>
+    <p><strong>Part of:</strong> <%= product.part_of %></p>
+    <p><strong>Ingredients (EN):</strong> <%= product.ingredients_en %></p>
+    <p><strong>Allergens (EN):</strong> <%= product.allergens_en %></p>
+
+    <!-- Display Cloudinary images -->
+    <div class="product-images">
+        <% product.photos.each do |photo| %>
+          <%= cl_image_tag photo.key, height: 300, width: 400, crop: :fill %>
+        <% end %>
+    </div>
+  </div>
+<% end %>
