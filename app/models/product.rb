@@ -13,4 +13,9 @@ class Product < ApplicationRecord
     "Sweets"
   ]
 
+  PART_OF = [
+    "Shop",
+    "Menu"
+  ]
+
 end

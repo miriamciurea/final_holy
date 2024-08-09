@@ -49,12 +49,12 @@ class ProductsController < ApplicationController
       :storage_en,
       :serving,
       :serving_en,
-      :part_of,
       :ingredients,
       :ingredients_en,
       :allergens,
       :allergens_en,
       :order,
+      part_of: [],
       category: [],  # Permit category as an array if it's a set of multiple selections
       photos: []  # Permit photos as an array
     )  end
