@@ -13,25 +13,28 @@
 </div>
 
 
+<div class="products-cards">
+  <div class="cards">
 
-<% @products.each do |product| %>
-  <div class="product">
-    <h2><%= product.name %> (<%= product.name_en %>)</h2>
-    <p><strong>Ingredients:</strong> <%= product.ingredients %></p>
-    <p><strong>Allergens:</strong> <%= product.allergens %></p>
-    <p><strong>Serving:</strong> <%= product.serving %> (<%= product.serving_en %>)</p>
-    <p><strong>Storage:</strong> <%= product.storage %> (<%= product.storage_en %>)</p>
-    <p><strong>Price:</strong> $<%= product.price %></p>
-    <p><strong>Category:</strong> <%= product.category %></p>
-    <p><strong>Part of:</strong> <%= product.part_of %></p>
-    <p><strong>Ingredients (EN):</strong> <%= product.ingredients_en %></p>
-    <p><strong>Allergens (EN):</strong> <%= product.allergens_en %></p>
+    <% @products.each do |product| %>
+      <%= link_to product_path(product), class: "product-link" do %>
+        <div class="card">
 
-    <!-- Display Cloudinary images -->
-    <div class="product-images">
-        <% product.photos.each do |photo| %>
-          <%= cl_image_tag photo.key, height: 300, width: 400, crop: :fill %>
-        <% end %>
-    </div>
+          <div class="photo-card" style="background-image: url(<%= cl_image_path(product.photos.first.key) %>);">
+          </div>
+
+          <div class="name">
+          <div class=""><%= product.name.upcase %></div>
+          <div class=""><%= "#{product.price}RON" %></div>
+          </div>
+
+        </div>
+      <% end %>
+    <% end %>
   </div>
-<% end %>
+
+</div>
+
+<div class="products-footer">
+  <%= render 'components/footer' %>
+</div>
