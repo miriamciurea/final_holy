@@ -149,10 +149,26 @@
 
 
 
+      <%# <div class="field"> %>
+        <%#= form.label :photos %>
+        <%#= form.file_field :photos, multiple: true, direct_upload: true, id: "photo-input" %>
+      <%# </div> %>
+
       <div class="field">
-        <%= form.label :photos %>
-        <%= form.file_field :photos, multiple: true, direct_upload: true, id: "photo-input" %>
+        <% if !@product.photos.first.nil? %>
+          <%= form.label :photos, "Existing Photos" %>
+          <div class="existing-photos">
+            <% @product.photos.each do |photo| %>
+              <div>
+                <%= cl_image_tag photo.key, alt: "Photo", class: "existing-photo" %>
+              </div>
+            <% end %>
+          </div>
+          <% else %>
+            <%= form.file_field :photos, multiple: true, direct_upload: true, id: "photo-input" %>
+        <% end %>
       </div>
+
 
       <div class="actions">
         <%= form.submit "SAVE", class: "button", style: "margin-bottom: 20px;" %>
