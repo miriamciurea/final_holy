@@ -1,39 +1,20 @@
 <div class="products-hero">
   <div class="products-content">
     <div class="hero-products-text">
-      <%= t(:products_hero,
-              treat: content_tag(:span, t("placeholders.treat"), class: 'treat')).upcase.html_safe %>
+      <%= t(:products_hero, treat: content_tag(:span, t("placeholders.treat"), class: 'treat')).upcase.html_safe %>
     </div>
 
     <div class="hero-products-sub">
       <%= t(:products_sub) %>
     </div>
-
   </div>
 </div>
 
-
-<div class="products-cards">
-  <div class="cards">
-
-    <% @products.each do |product| %>
-      <%= link_to product_path(product), class: "product-link" do %>
-        <div class="card">
-
-          <div class="photo-card" style="background-image: url(<%= cl_image_path( product.photos.first.nil? ? Product.last.photos.first.key : product.photos.first.key )  %>);">
-          </div>
-
-          <div class="name">
-          <div class=""><%= product.name.upcase %></div>
-          <div class=""><%= "#{product.price}RON" %></div>
-          </div>
-
-        </div>
-      <% end %>
-    <% end %>
-  </div>
-
-</div>
+<% if @page_type == 'shop' %>
+  <%= render 'products/shop' %>
+<% elsif @page_type == 'menu' %>
+  <%= render 'products/menu' %>
+<% end %>
 
 <div class="products-footer">
   <%= render 'components/footer' %>

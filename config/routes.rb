@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
   devise_for :users
+  get 'products/shop', to: 'products#shop', as: 'shop_products'
+  get 'products/menu', to: 'products#menu', as: 'menu_products'
+  get 'products/filter', to: 'products#filter'
   resources :products
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 

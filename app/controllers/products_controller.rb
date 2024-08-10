@@ -1,6 +1,31 @@
 class ProductsController < ApplicationController
   before_action :set_product, only: [:show, :edit, :update, :destroy]
 
+  def shop
+    @products = Product.where("part_of @> ?", "{Shop}")
+    @page_type = 'shop'
+  end
+
+  def menu
+    @products = Product.where("part_of @> ?", "{Menu}")
+    @page_type = 'menu'
+  end
+
+  def filter
+    if params[:category]
+      @products = Product.where("category @> ?", "{#{params[:category]}}")
+    elsif params[:part_of]
+      @products = Product.where("part_of @> ?", "{#{params[:part_of]}}")
+    else
+      @products = Product.all
+    end
+
+    respond_to do |format|
+      format.html { render partial: 'products_list', locals: { products: @products } }
+    end
+  end
+
+
   def index
     @products = Product.all
   end
