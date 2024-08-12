@@ -5,8 +5,8 @@ export default class extends Controller {
   static targets = ["productsContainer"]
 
   connect() {
-    console.log("heei");
-    console.log(this.productsContainerTarget.innerHTML);
+    // console.log("heei");
+    // console.log(this.productsContainerTarget.innerHTML);
 
 
     this.categoryOptions = this.element.querySelectorAll(".category-option")

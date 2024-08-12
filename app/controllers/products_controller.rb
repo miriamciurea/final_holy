@@ -29,6 +29,21 @@ class ProductsController < ApplicationController
   end
 
   def show
+
+    if I18n.locale == :en
+      @name = @product.name_en
+      @storage = @product.storage_en
+      @serving = @product.serving_en
+      @ingredients = @product.ingredients_en
+      @allergens = @product.allergens_en
+    else
+      @name = @product.name
+      @storage = @product.storage
+      @serving = @product.serving
+      @ingredients = @product.ingredients
+      @allergens = @product.allergens
+    end
+
   end
 
   def new
