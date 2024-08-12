@@ -27,8 +27,8 @@
         <div class="workshop"> <%= link_to t(:workshop), workshop_path, class: "link" %></div>
         <div class="about"><%= link_to t(:about), about_path, class: "link" %></div>
         <div class="contact"><%= link_to t(:contact), contact_path, class: "link" %> </div>
-        <div class="shop"> <%= t(:shop) %></div>
-        <div class="menu"> <%= t(:menu) %> </div>
+        <div class="shop"> <%= link_to t(:shop), shop_products_path, class: "link" %></div>
+        <div class="menu"><%= link_to t(:menu), menu_products_path, class: "link" %></div>
 
     </div>
   </div>

@@ -4,6 +4,7 @@
   <%= @product.storage %>
   <%= @product.serving %>
   <%= @product.category %>
+  <%= cl_image_tag @product.photos.first.key, width: "400px", height: "100px" %>
 
 <%= link_to 'Edit', edit_product_path(@product), class: 'edit-link' %>
 

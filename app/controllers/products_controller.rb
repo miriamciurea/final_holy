@@ -1,6 +1,31 @@
 class ProductsController < ApplicationController
   before_action :set_product, only: [:show, :edit, :update, :destroy]
 
+  def shop
+    @products = Product.where("part_of @> ?", "{Shop}")
+    @page_type = 'shop'
+  end
+
+  def menu
+    @products = Product.where("part_of @> ?", "{Menu}")
+    @page_type = 'menu'
+  end
+
+  def filter
+    if params[:category]
+      @products = Product.where("category @> ?", "{#{params[:category]}}")
+    elsif params[:part_of]
+      @products = Product.where("part_of @> ?", "{#{params[:part_of]}}")
+    else
+      @products = Product.all
+    end
+
+    respond_to do |format|
+      format.html { render partial: 'products_list', locals: { products: @products } }
+    end
+  end
+
+
   def index
     @products = Product.all
   end
@@ -49,12 +74,12 @@ class ProductsController < ApplicationController
       :storage_en,
       :serving,
       :serving_en,
-      :part_of,
       :ingredients,
       :ingredients_en,
       :allergens,
       :allergens_en,
       :order,
+      part_of: [],
       category: [],  # Permit category as an array if it's a set of multiple selections
       photos: []  # Permit photos as an array
     )  end

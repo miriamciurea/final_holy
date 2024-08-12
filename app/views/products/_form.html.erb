@@ -122,20 +122,56 @@
         </div>
       </div>
 
+        <%#= form.select :part_of, options_for_select(["SHOP", "MENU"], @product.part_of), prompt: "SELECT SHOP OR MENU", class: "styled-select" %>
+
+<div class="field">
+  <%= form.label :part_of, "Select Part Of" %>
+  <% options = ["SHOP", "MENU"] %>
+
+    <div class="custom-checkbox-container-prod">
+      <%= check_box_tag 'product[part_of][]', "Shop", @product.part_of&.include?("Shop"), id: "part_of_shop", class: 'custom-checkbox' %>
+      <label for="part_of_shop">
+        <span class="checkmark-prod"></span>
+          SHOP
+      </label>
+    </div>
+
+    <div class="custom-checkbox-container-prod">
+      <%= check_box_tag 'product[part_of][]', "Menu", @product.part_of&.include?("Menu"), id: "part_of_menu", class: 'custom-checkbox' %>
+      <label for="part_of_menu">
+        <span class="checkmark-prod"></span>
+          MENU
+      </label>
+    </div>
+
+</div>
+
+
+
+
+      <%# <div class="field"> %>
+        <%#= form.label :photos %>
+        <%#= form.file_field :photos, multiple: true, direct_upload: true, id: "photo-input" %>
+      <%# </div> %>
+
       <div class="field">
-        <%= form.select :part_of, options_for_select(["SHOP", "MENU"], @product.part_of), prompt: "SELECT SHOP OR MENU", class: "styled-select" %>
+        <% if !@product.photos.first.nil? %>
+          <%= form.label :photos, "Existing Photos" %>
+          <div class="existing-photos">
+            <% @product.photos.each do |photo| %>
+              <div>
+                <%= cl_image_tag photo.key, alt: "Photo", class: "existing-photo" %>
+              </div>
+            <% end %>
+          </div>
+          <% else %>
+            <%= form.file_field :photos, multiple: true, direct_upload: true, id: "photo-input" %>
+        <% end %>
       </div>
 
-
-
-
-      <div class="field">
-        <%= form.label :photos %>
-        <%= form.file_field :photos, multiple: true, direct_upload: true, id: "photo-input" %>
-      </div>
 
       <div class="actions">
-        <%= form.submit "CREATE NEW PRODUCT", class: "button", style: "margin-bottom: 20px;" %>
+        <%= form.submit "SAVE", class: "button", style: "margin-bottom: 20px;" %>
       </div>
     <% end %>
 

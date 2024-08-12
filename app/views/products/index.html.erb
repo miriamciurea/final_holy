@@ -1,6 +1,21 @@
-<h1>Products</h1>
-<ul>
-  <% @products.each do |product| %>
-    <li><%= link_to product.name, product_path(product) %></li>
-  <% end %>
-</ul>
+<div class="products-hero">
+  <div class="products-content">
+    <div class="hero-products-text">
+      <%= t(:products_hero, treat: content_tag(:span, t("placeholders.treat"), class: 'treat')).upcase.html_safe %>
+    </div>
+
+    <div class="hero-products-sub">
+      <%= t(:products_sub) %>
+    </div>
+  </div>
+</div>
+
+<% if @page_type == 'shop' %>
+  <%= render 'products/shop' %>
+<% elsif @page_type == 'menu' %>
+  <%= render 'products/menu' %>
+<% end %>
+
+<div class="products-footer">
+  <%= render 'components/footer' %>
+</div>
