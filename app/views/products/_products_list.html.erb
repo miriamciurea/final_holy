@@ -1,0 +1,21 @@
+<div class="products-list">
+  <% if @products.size == 0 %>
+    <p>No products found</p>
+    <% else %>
+      <div class="products-cards">
+        <div class="cards">
+          <% @products.each do |product| %>
+            <%= link_to product_path(product), class: "product-link" do %>
+              <div class="card">
+                <div class="photo-card" style="background-image: url(<%= cl_image_path( product.photos.first.nil? ? Product.last.photos.first.key : product.photos.first.key ) %>);"></div>
+                <div class="name">
+                  <div class=""><%= product.name.upcase %></div>
+                  <div class=""><%= "#{product.price}RON" %></div>
+                </div>
+              </div>
+            <% end %>
+          <% end %>
+        </div>
+      </div>
+  <% end %>
+</div>

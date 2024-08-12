@@ -5,14 +5,14 @@ export default class extends Controller {
   static targets = ["navbar", "icon", "details", "sidebar"]
 
   connect() {
-    console.log("Controller connected");
+    console.log("Navbar controller connected");
     this.initialOffsetTop = this.navbarTarget.offsetTop;
     this.scrolled = false;
 
-    console.log("Initial offset top:", this.initialOffsetTop);
-    console.log("Icon target:", this.iconTarget);
-    console.log("Details target:", this.detailsTarget);
-    console.log("Sidebar target:", this.sidebarTarget);
+    // console.log("Initial offset top:", this.initialOffsetTop);
+    // console.log("Icon target:", this.iconTarget);
+    // console.log("Details target:", this.detailsTarget);
+    // console.log("Sidebar target:", this.sidebarTarget);
 
     // Initial check
     this.updateNavbarVisibility();
@@ -33,7 +33,7 @@ export default class extends Controller {
   }
 
   scroll() {
-    console.log("Scroll event triggered");
+    // console.log("Scroll event triggered");
     const shouldBeScrolled = window.scrollY > this.initialOffsetTop;
     if (shouldBeScrolled !== this.scrolled) {
       this.scrolled = shouldBeScrolled;
@@ -46,7 +46,7 @@ export default class extends Controller {
   }
 
   updateNavbarVisibility() {
-    console.log("Updating navbar visibility");
+    // console.log("Updating navbar visibility");
     if (window.innerWidth <= 730) {
       this.iconTarget.classList.remove('hidden');
       this.detailsTarget.classList.add('hidden');
