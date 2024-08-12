@@ -1,19 +1,25 @@
 .button {
   background-color: var(--blue);
   border: none;
-  filter: blur(1px);
+
+  // filter: blur(1px);
+  filter: blur(0.4px);
+
   padding: 10px 30px;
   border-radius: 5px;
   text-decoration: none;
   color: white;
   display: inline-block; /* Ensure it behaves like a button */
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 .button:hover {
   filter: blur(0px);
+  background-color: var(--yellow);
+  color: var(--blue);
   font-weight: var(--bold);
 }
 
-.button:hover {
-  color: var(--yellow);
-}
+// .button:hover {
+//   color: var(--yellow);
+// }

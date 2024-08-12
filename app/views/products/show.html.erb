@@ -1,10 +1,88 @@
-<div class="" style="color: black; height: 100vh; display: flex; justify-content: center; align-items: center;">
-  <%= @product.name %>
-  <%= @product.price %>
-  <%= @product.storage %>
-  <%= @product.serving %>
-  <%= @product.category %>
-  <%= cl_image_tag @product.photos.first.key, width: "400px", height: "100px" %>
+<div class="hero-show-product" data-controller="carousel" data-carousel-speed="fast" data-carousel-direction="left">
+  <div class="carousel-inner">
+    <% @product.photos.each do |photo| %>
+      <%= cl_image_tag photo.key, class: "hero-image", data: { carousel_target: "image" } %>
+    <% end %>
+    <% @product.photos.each do |photo| %> <!-- Duplicate for continuous effect -->
+      <%= cl_image_tag photo.key, class: "hero-image", data: { carousel_target: "image" } %>
+    <% end %>
+  </div>
+</div>
+
+
+
+
+<div class="product-show-container">
+
+  <div class="first-header">
+
+    <div class="name-price">
+      <div class="name-product">
+        <%= @name.upcase %>
+      </div>
+
+      <div class="price">
+        <%= @product.price %>RON
+      </div>
+    </div>
+
+    <div class="product" data-controller="quantity-selector">
+      <div class="quantity-selector">
+        <button data-action="click->quantity-selector#decrease" id="decrease-quantity">-</button>
+        <input type="number" data-quantity-selector-target="quantityInput" value="1" min="1" id="quantity-input" style="width: 50px;">
+        <button data-action="click->quantity-selector#increase" id="increase-quantity">+</button>
+      </div>
+
+      <button data-action="click->quantity-selector#addToCart" id="add-to-cart" class="button" ><%= t(:add_to_cart) %></button>
+
+      <%# <p>Items in Cart: <span data-quantity-selector-target="cartCount">0</span></p> %>
+    </div>
+
+  </div>
+
+  <div class="product-show-details">
+    <div class="details-1"><%= t(:details) %></div>
+
+    <div class="details-2">
+
+      <div class="ingredients">
+        <div class="ingredients-title"><%= t(:ingredients) %></div>
+        <div class="ingredients-list">
+          <%= @ingredients %>
+        </div>
+      </div>
+
+      <div class="ingredients">
+        <div class="ingredients-title"><%= t(:allergens) %></div>
+        <div class="ingredients-list">
+          <%= @allergens %>
+        </div>
+      </div>
+
+      <div class="ingredients">
+        <div class="ingredients-title"><%= t(:serving) %></div>
+        <div class="ingredients-list">
+          <%= @serving %>
+          <%= @storage %>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+
+</div>
+
+
+
+
+
+
+
+
+<div class="products-footer" style="background-image: url(<%= cl_image_path(@product.photos.second.key) %>)">
+  <%= render 'components/footer' %>
+</div>
 
 <%= link_to 'Edit', edit_product_path(@product), class: 'edit-link' %>
 
@@ -13,5 +91,3 @@
   <%= form_with(model: @product, method: :delete, local: true) do |form| %>
     <%= form.submit 'DELETE', class: 'button' %>
   <% end %>
-
-</div>

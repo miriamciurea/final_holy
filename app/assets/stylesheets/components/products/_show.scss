@@ -1,0 +1,130 @@
+.hero-show-product {
+  height: 60vh;
+  display: flex;
+  overflow: hidden;
+  position: relative;
+  gap: 5px;
+  background-size: cover;
+  background-position: center;
+}
+
+.carousel-inner {
+  display: flex;
+  gap: 5px;
+  width: 100%;
+  // width: calc(100% * 2);
+  animation: scroll var(--_animation-duration, 40s) linear infinite;
+}
+
+.hero-show-product img {
+  flex: 0 0 auto;
+  width: 50%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  min-width: 300px;
+
+  opacity: 0; /* Initially hidden */
+  filter: blur(10px); /* Initially blurred */
+  transform: translateY(20px); /* Start from below */
+  transition: opacity 1s ease-out, filter 1s ease-out, transform 1s ease-out; /* Transition for smooth effect */
+  will-change: opacity, filter, transform;
+}
+
+/* Keyframes for scrolling */
+@keyframes scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
+@keyframes blur-up {
+  0% {
+    opacity: 0;
+    filter: blur(10px);
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    filter: blur(0);
+    transform: translateY(0);
+  }
+}
+
+.hero-show-product.loaded img {
+  animation: blur-up 3s forwards; /* Apply the blur-up effect */
+}
+
+.product-show-container {
+  min-height: 80vh;
+}
+
+.quantity-selector {
+  button, input {
+    font-size: 1.5rem;
+    text-decoration: none;
+    border: none;
+    background: transparent;
+  }
+
+  input {
+    // width: 20px;
+    text-align: center;
+  }
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+
+.first-header {
+  display: flex;
+  justify-content: space-between;
+  margin: 20px;
+}
+
+.name-price {
+  display: flex;
+  font-size: 1.5rem;
+  gap: 10px;
+  align-items: center;
+}
+
+.price {
+  font-size: 1.3rem;
+  font-weight: var(--extra-light);
+}
+
+.product {
+  display: flex;
+  gap: 10px;
+}
+
+/* Hide the default number input spinners in WebKit browsers (Chrome, Safari) */
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Hide the default number input spinners in Firefox */
+input[type="number"] {
+  -moz-appearance: textfield;
+}
+
+/* Adjust width and alignment if necessary */
+input[type="number"] {
+  width: 50px; /* Adjust as needed */
+}
+
+.product-show-details {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  width: 100%;
+  align-items: center;
+  margin: 20px;
+  font-size: 1.5rem;
+}

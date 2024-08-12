@@ -2,35 +2,48 @@ class ProductsController < ApplicationController
   before_action :set_product, only: [:show, :edit, :update, :destroy]
 
   def shop
-    @products = Product.where("part_of @> ?", "{Shop}")
+    @products = Product.where("part_of LIKE ?", '%Shop%')
     @page_type = 'shop'
   end
 
   def menu
-    @products = Product.where("part_of @> ?", "{Menu}")
+    @products = Product.where("part_of LIKE ?", '%Menu%')
     @page_type = 'menu'
   end
 
-  def filter
-    if params[:category]
-      @products = Product.where("category @> ?", "{#{params[:category]}}")
-    elsif params[:part_of]
-      @products = Product.where("part_of @> ?", "{#{params[:part_of]}}")
+  def filter_by_category
+    if params[:category] == 'ALL' || params[:category].blank?
+      @products = Product.where("part_of LIKE ?", "%shop%")
     else
-      @products = Product.all
+      @products = Product.where("category LIKE ? AND part_of LIKE ?", "%#{params[:category]}%", "%shop%")
     end
 
     respond_to do |format|
       format.html { render partial: 'products_list', locals: { products: @products } }
+      format.json { render json: @products }
     end
   end
-
 
   def index
     @products = Product.all
   end
 
   def show
+
+    if I18n.locale == :en
+      @name = @product.name_en
+      @storage = @product.storage_en
+      @serving = @product.serving_en
+      @ingredients = @product.ingredients_en
+      @allergens = @product.allergens_en
+    else
+      @name = @product.name
+      @storage = @product.storage
+      @serving = @product.serving
+      @ingredients = @product.ingredients
+      @allergens = @product.allergens
+    end
+
   end
 
   def new

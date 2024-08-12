@@ -1,9 +1,13 @@
 Rails.application.routes.draw do
   devise_for :users
-  get 'products/shop', to: 'products#shop', as: 'shop_products'
-  get 'products/menu', to: 'products#menu', as: 'menu_products'
   get 'products/filter', to: 'products#filter'
-  resources :products
+  resources :products do
+    collection do
+      get 'filter_by_category'
+      get 'shop'
+      get 'menu'
+    end
+  end
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
