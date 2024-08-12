@@ -1,26 +1,34 @@
-// import { Controller } from "@hotwired/stimulus"
+import { Controller } from "@hotwired/stimulus"
 
-// // Connects to data-controller="carousel"
-// export default class extends Controller {
-//   static targets = ["image"]
+// Connects to data-controller="carousel"
+export default class extends Controller {
+  static values = {
+    speed: String,
+    direction: String
+  }
 
-//   connect() {
-//     console.log("Carousel controller connected!");
-//     this.imagesLoaded = 0;
+  connect() {
+    if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      this.addAnimation();
+      this.addBlurEffect();
+    }
+  }
 
-//     this.imageTargets.forEach(image => {
-//       image.addEventListener('load', () => this.handleImageLoad());
-//     });
+  addAnimation() {
+    const carouselInner = this.element.querySelector(".carousel-inner");
 
-//     // Handle images that may be cached
-//     this.handleImageLoad();
-//   }
+    // Calculate the width of the carousel-inner for animation purposes
+    const totalWidth = carouselInner.scrollWidth;
+    carouselInner.style.width = `${totalWidth}px`;
 
-//   handleImageLoad() {
-//     this.imagesLoaded++;
-//     if (this.imagesLoaded === this.imageTargets.length) {
-//       this.element.classList.add('rotate');
-//       console.log("Carousel rotation started");
-//     }
-//   }
-// }
+    this.element.style.setProperty('--_animation-duration', this.speedValue || '40s');
+    this.element.style.setProperty('--_animation-direction', this.directionValue || 'left');
+  }
+
+  addBlurEffect() {
+    // Add the 'loaded' class after a short delay to trigger the blur-up animation
+    setTimeout(() => {
+      this.element.classList.add('loaded');
+    }, 200); // Adjust the timeout as needed
+  }
+}
