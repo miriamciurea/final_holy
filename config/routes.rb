@@ -6,6 +6,11 @@ Rails.application.routes.draw do
       get 'admin'
     end
   end
+
+  resources :cart_items, only: [:new, :create]
+
+  resources :payments
+
   get 'products/filter', to: 'products#filter'
   resources :products do
     collection do

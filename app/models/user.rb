@@ -17,4 +17,11 @@ class User < ApplicationRecord
     self.admin # Assuming 'admin' is a boolean attribute
   end
 
+  has_one :cart, dependent: :destroy
+  after_create :create_cart
+
+  def create_cart
+    Cart.create(user: self)
+  end
+
 end

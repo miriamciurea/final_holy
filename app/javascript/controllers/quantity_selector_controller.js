@@ -1,12 +1,11 @@
 import { Controller } from "@hotwired/stimulus"
 
 export default class extends Controller {
-  static targets = ["quantityInput", "cartCount"]
+  static targets = ["quantityInput", "cartCount", "sidebar"]
 
   connect() {
     console.log("Quantity Selector controller connected");
-
-    this.cartCountValue = 0;
+    this.cartCountValue = this.cartCountTarget ? this.cartCountTarget.textContent : '0';
   }
 
   decrease() {
@@ -21,10 +20,50 @@ export default class extends Controller {
     this.quantityInputTarget.value = currentQuantity + 1;
   }
 
-  addToCart() {
+  async addToCart() {
     let quantityToAdd = parseInt(this.quantityInputTarget.value);
-    this.cartCountValue += quantityToAdd;
-    this.cartCountTarget.textContent = this.cartCountValue;
+    let productId = this.element.dataset.productId; // Ensure this is set correctly in your HTML
+
+    try {
+      const response = await fetch('/cart_items', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'X-CSRF-Token': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
+        },
+        body: JSON.stringify({
+          quantity: quantityToAdd,
+          product_id: productId
+        })
+      });
+
+      const data = await response.json();
+
+      if (response.ok) {
+        // Update the sidebar with the product details
+        if (this.sidebarTarget) {
+          this.sidebarTarget.innerHTML = `
+            <div class="sidebar-content">
+              ${data.cart_items.map(item => `
+                <div class="sidebar-item">
+                  <p>Name: ${item.name}</p>
+                  <p>Quantity: ${item.quantity}</p>
+                </div>
+              `).join('')}
+              <p style="display: flex; height: 100%; align-items: end;">Total Items in Cart: ${data.cart_item_count}</p>
+            </div>
+          `;
+          this.sidebarTarget.style.display = 'block';
+        }
+        if (this.cartCountTarget) {
+          this.cartCountTarget.textContent = data.cart_item_count;
+        }
+      } else {
+        console.error(data.message);
+      }
+    } catch (error) {
+      console.error('Error:', error);
+    }
   }
 
   quantityInput(event) {
@@ -34,10 +73,22 @@ export default class extends Controller {
   }
 
   get cartCountValue() {
-    return parseInt(this.cartCountTarget.textContent);
+    return parseInt(this.cartCountTarget ? this.cartCountTarget.textContent : '0');
   }
 
   set cartCountValue(value) {
-    this.cartCountTarget.textContent = value;
+    if (this.cartCountTarget) {
+      this.cartCountTarget.textContent = value;
+    }
+  }
+
+  toggleSidebar() {
+    this.sidebarTarget.classList.toggle('open');
+    this.sidebarTarget.classList.remove('hidden');
+  }
+
+  closeSidebar() {
+    // this.sidebarTarget.classList.remove('open');
+    this.toggleSidebar();
   }
 }
