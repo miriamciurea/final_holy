@@ -70,3 +70,7 @@ en:
   ingredients: "KEY INGREDIENTS"
   allergens: "ALLERGENS"
   serving: "SERVING & STORAGE"
+  workshop_page:
+    title: "WORKSHOP"
+    coming_soon: "COMING SOON"
+    subscribe_message: 'Make sure you <a href="/subscribe" class="link">subscribe</a> to our newsletter!'

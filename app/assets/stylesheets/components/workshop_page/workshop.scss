@@ -1,0 +1,106 @@
+// Import any necessary dependencies here
+// @import "../body";
+
+.workshop-page {
+  width: 100vw;
+  height: 100vh;
+  background-image: url('/assets/cooking.jpg'); // Replace with the correct relative path
+  background-size: 115%;
+  background-position-x: calc(50% + 80px);
+  background-position-y: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: white;
+
+  .text {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    width: 100%;
+    height: 100%;
+  }
+
+  .text1 {
+    font-weight: var(--bold);
+    font-size: 1.3rem;
+    color: var(--blue);
+  }
+
+  .text2 {
+    font-weight: var(--black);
+    font-size: 2.8rem;
+    color: black;
+  }
+
+  .text3 {
+    font-weight: var(--bold);
+    font-size: 1.3rem;
+    color: var(--blue);
+  }
+}
+
+.hero-home-svg {
+  position: absolute;
+  bottom: 0px;
+  right: 10%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.hero-home-svg img {
+  width: 0.1vw;
+  height: 7vh;
+}
+
+.svg-text {
+  font-weight: var(--extra-light);
+  color: var(--yellow);
+  font-size: 0.6rem;
+  padding: 5px;
+  white-space: nowrap;
+}
+
+.buttons {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 7%;
+  padding: 20px;
+}
+
+@media (max-width: 836px) {
+  .workshop-page {
+    background-repeat: no-repeat;
+    background-size: 200%;
+    background-position: 27% bottom;
+  }
+}
+
+@media (max-width: 730px) {
+  .workshop-page {
+    background-repeat: no-repeat;
+    background-size: 350%;
+    background-position: 27% bottom;
+  }
+
+  .text1,
+  .text3 {
+    font-size: 0.7rem;
+  }
+
+  .text2 {
+    font-size: 2rem;
+  }
+
+  .button {
+    padding: 5px 20px;
+    font-size: 0.8rem;
+  }
+}
