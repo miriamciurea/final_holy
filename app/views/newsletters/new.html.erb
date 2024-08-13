@@ -1,0 +1,18 @@
+<!-- app/views/newsletters/new.html.erb -->
+<h1>Create New Newsletter</h1>
+
+<%= form_with(model: @newsletter, local: true) do |form| %>
+  <div class="field">
+    <%= form.label :title %>
+    <%= form.text_field :title %>
+  </div>
+
+  <div class="field">
+    <%= form.label :content %>
+    <%= form.text_area :content, rows: 10, cols: 30 %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit 'Send Newsletter' %>
+  </div>
+<% end %>

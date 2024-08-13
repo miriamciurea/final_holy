@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'subscriptions/create'
   devise_for :users
   resources :users do
     collection do
@@ -27,6 +28,9 @@ Rails.application.routes.draw do
   get "workshop", to: "pages#workshop"
   # get "privacy", to: "pages#privacy"
   # get "terms", to: "pages#terms"
+
+  # Routes for newsletters
+  resources :newsletters, only: [:new, :create, :index]
 
 
   get 'switch_language', to: 'application#switch_language'
