@@ -17,11 +17,49 @@
 
     <div class="f-comp">
       <div class="f-comp-title"><%= t(:subscribe) %></div>
-      <form id="newsletter-form">
-            <input type="email" id="email" name="email" placeholder="<%= t(:email_ph) %>" required>
-            <button type="submit" class="button">SUBSCRIBE</button>
-      </form>
+      <%= form_with url: subscriptions_create_path, method: :post, id: "newsletter-form", data: { turbo: "true" } do |form| %>
+        <%= form.email_field :email, placeholder: t(:email_ph), required: true, class: 'form-input' %>
+        <%= form.submit 'SUBSCRIBE', class: 'button', id: 'subscribe-button' %>
+      <% end %>
     </div>
+
+
+
+
+    <script>
+      document.addEventListener('DOMContentLoaded', () => {
+        // Get the form and button elements
+        const form = document.getElementById('newsletter-form');
+        const submitButton = document.getElementById('subscribe-button');
+
+        if (form && submitButton) {
+          // Handle AJAX form success
+          form.addEventListener('ajax:success', (event) => {
+            const [data, status, xhr] = event.detail;
+
+            // Change button text to 'SUBSCRIBED'
+            submitButton.textContent = 'SUBSCRIBED';
+            submitButton.disabled = true; // Optionally disable the button
+
+            // Optionally, display a success message or handle other UI updates
+          });
+
+          // Handle AJAX form error
+          form.addEventListener('ajax:error', (event) => {
+            const [data, status, xhr] = event.detail;
+
+            console.error('Form submission failed:', data);
+
+            // Optionally, display an error message or handle UI updates
+          });
+        }
+      });
+
+
+    </script>
+
+
+
 
     <div class="f-comp">
       <div class="f-comp-title">HOLY BAKERY</div>
