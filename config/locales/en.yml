@@ -70,6 +70,8 @@ en:
   ingredients: "KEY INGREDIENTS"
   allergens: "ALLERGENS"
   serving: "SERVING & STORAGE"
+  account: "ACCOUNT"
+  profile: "PROFILE"
   workshop_page:
     title: "WORKSHOP"
     coming_soon: "COMING SOON"

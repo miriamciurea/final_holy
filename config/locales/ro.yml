@@ -41,6 +41,8 @@ ro:
   ingredients: "INGREDIENTELE CHEIE"
   allergens: "ALERGENI"
   serving: "SERVIRE & PASTRARE"
+  account: "CONT"
+  profile: "PROFIL"
   workshop_page:
     title: "ATELIER"
     coming_soon: "ÎN CURÂND"

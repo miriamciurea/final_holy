@@ -19,6 +19,80 @@
         <div class="menu">
             <%= link_to "LOG OUT", destroy_user_session_path, data: {turbo_method: :delete}, class: "link" %>
         </div>
+
+          <div class="dropdown">
+            <button id="dropdown-btn" class="dropdown-btn">
+              <%= t(:account) %>
+            </button>
+            <div id="dropdown" class="dropdown-menu">
+            <div class="dropdown-header">
+              <span>My Account</span>
+            </div>
+            <div class="dropdown-section">
+              <%# <button class="dropdown-item">Profile</button> %>
+              <%= link_to t(:profile), user_path(current_user), class: "dropdown-item" %>
+              <% if current_user.admin? %>
+                <%= link_to "ADMIN", admin_users_path(current_user), class: "dropdown-item" %>
+              <% end %>
+              <button class="dropdown-item">Dashboard</button>
+              <button class="dropdown-item">Settings</button>
+            </div>
+            <div class="dropdown-section">
+               <%= link_to "LOG OUT", destroy_user_session_path, data: {turbo_method: :delete}, class: "dropdown-item", style: "text-decoration: none;" %>
+
+            </div>
+          </div>
+
+          <script>
+            const dropdownBtn = document.querySelector("#dropdown-btn");
+            const dropdown = document.querySelector("#dropdown");
+            const DROPDOWN_ANIMATION = {
+              open: "dropdown-open",
+              close: "dropdown-close"
+            };
+
+            let isOpen = false;
+
+            const dropdownOutsideClick = (ev) => {
+              // Close the dropdown if it is open and the click is outside the button and the dropdown
+              if (isOpen && !dropdown.contains(ev.target) && ev.target !== dropdownBtn) {
+                isOpen = false;
+                closeDropdown();
+              }
+            };
+
+            const openDropdown = () => {
+              // Add the open class and remove any close class
+              dropdown.classList.add(DROPDOWN_ANIMATION.open);
+              dropdown.classList.remove(DROPDOWN_ANIMATION.close);
+              dropdown.style.display = 'block'; // Ensure it's visible
+            };
+
+            const closeDropdown = () => {
+              // Add the close class and remove the open class
+              dropdown.classList.add(DROPDOWN_ANIMATION.close);
+              dropdown.classList.remove(DROPDOWN_ANIMATION.open);
+
+              // Listen for the animation to finish before hiding
+              dropdown.addEventListener("animationend", () => {
+                if (!isOpen) {
+                  dropdown.style.display = 'none'; // Hide the dropdown after the animation
+                }
+              }, { once: true });
+            };
+
+            const toggleDropdown = () => {
+              isOpen = !isOpen;
+              isOpen ? openDropdown() : closeDropdown();
+            };
+
+            dropdownBtn.addEventListener("click", toggleDropdown);
+            document.body.addEventListener("click", dropdownOutsideClick);
+
+          </script>
+
+    </div>
+
         <% end %>
 
         <div class="lang"><%= link_to "EN", switch_language_path, class: "link" %></div>

@@ -1,6 +1,11 @@
 Rails.application.routes.draw do
   get 'subscriptions/create'
   devise_for :users
+  resources :users do
+    collection do
+      get 'admin'
+    end
+  end
   get 'products/filter', to: 'products#filter'
   resources :products do
     collection do
