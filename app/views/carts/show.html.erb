@@ -1,0 +1,11 @@
+<h2>Your Cart</h2>
+<% @cart.cart_items.each do |item| %>
+  <p><%= item.product.name %> - <%= item.quantity %> x <%= item.product.price %></p>
+  <%= link_to 'Remove', remove_item_cart_path(item), method: :delete %>
+  <%= form_with url: update_quantity_cart_path(item), method: :patch do %>
+    <%= number_field_tag :quantity, item.quantity %>
+    <%= submit_tag 'Update' %>
+  <% end %>
+<% end %>
+<p>Total: <%= @cart.total_price %></p>
+<%= link_to 'Checkout', new_order_path %>

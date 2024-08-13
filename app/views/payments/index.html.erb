@@ -1,0 +1,11 @@
+<h1>Products</h1>
+<ul>
+  <% @stripe_products.data.each do |product| %>
+    <li>
+      <strong><%= product.name %></strong><br>
+      Price: <%= number_to_currency(Stripe::Price.retrieve(product.price).unit_amount / 100.0) %><br>
+      Description: <%= product.description %><br>
+      <img src="<%= product.images.first %>" alt="<%= product.name %>">
+    </li>
+  <% end %>
+</ul>

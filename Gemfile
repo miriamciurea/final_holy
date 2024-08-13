@@ -8,6 +8,8 @@ gem "devise"
 
 gem "geocoder"
 
+gem 'stripe'
+
 gem 'sassc'
 
 ruby "3.1.2"
