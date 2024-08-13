@@ -167,9 +167,9 @@
   }
 
   &-menu {
-    display: none;
+    display: none ;
     position: absolute;
-    left: -50px;
+    left: -44px;
     top: 100%;
     margin-top: 0;
     background-color: rgba(0, 0, 0, 0.5);
@@ -177,14 +177,25 @@
     border-radius: 5px;
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
     font-size: 14px;
-    border: 1px solid #3f3f3f;
+    // border: 1px solid #3f3f3f;
     display: flex;
     flex-direction: column;
     gap: 8px; // Space between items
     padding: 8px 0;
 
     &.open {
-      display: block;
+
+          display: block;
+          /* Show when open */
+          opacity: 1;
+          transition: opacity 0.3s ease;
+    }
+
+    &.close {
+      display: none ;
+      /* Hide when closed */
+      opacity: 0;
+      transition: opacity 0.3s ease;
     }
   }
 
