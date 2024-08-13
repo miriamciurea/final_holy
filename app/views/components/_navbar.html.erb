@@ -7,29 +7,26 @@
     <div class="small-frame hidden" data-navbar-target="icon" data-action="click->navbar#toggleSidebar">
       <i class="fa-solid fa-bars-staggered icon"></i>
     </div>
-    <div class="details" data-navbar-target="details">
 
-        <% unless user_signed_in? %>
+    <div class="details" data-navbar-target="details">
+      <% unless user_signed_in? %>
         <div class="menu">
           <%= link_to 'LOG IN', new_user_session_path, class: "link" %>
         </div>
-        <% end %>
+      <% end %>
 
-        <% if user_signed_in? %>
-
-
-          <div class="dropdown">
-            <button id="dropdown-btn" class="dropdown-btn">
-              <div class="link">
-                <%= t(:account) %>
-              </div>
-            </button>
-            <div id="dropdown" class="dropdown-menu">
+      <% if user_signed_in? %>
+        <div class="dropdown">
+          <button id="dropdown-btn" class="dropdown-btn" aria-haspopup="true" aria-expanded="false">
+            <div class="link">
+              <%= t(:account) %>
+            </div>
+          </button>
+          <div id="dropdown" class="dropdown-menu" role="menu">
             <div class="dropdown-header">
               <span>My Account</span>
             </div>
             <div class="dropdown-section">
-              <%# <button class="dropdown-item">Profile</button> %>
               <%= link_to t(:profile), user_path(current_user), class: "dropdown-item" %>
               <% if current_user.admin? %>
                 <%= link_to "ADMIN", admin_users_path(current_user), class: "dropdown-item" %>
@@ -38,72 +35,58 @@
               <button class="dropdown-item">SETTINGS</button>
             </div>
             <div class="dropdown-section">
-               <%= link_to "LOG OUT", destroy_user_session_path, data: {turbo_method: :delete}, class: "dropdown-item", style: "text-decoration: none;" %>
-
+              <%= link_to "LOG OUT", destroy_user_session_path, data: { turbo_method: :delete }, class: "dropdown-item", style: "text-decoration: none;" %>
             </div>
           </div>
+        </div>
 
-          <script>
-            const dropdownBtn = document.querySelector("#dropdown-btn");
-            const dropdown = document.querySelector("#dropdown");
-            const DROPDOWN_ANIMATION = {
-              open: "dropdown-open",
-              close: "dropdown-close"
-            };
+        <script>
+                document.addEventListener("DOMContentLoaded", function() {
+            var dropdown = document.getElementById("dropdown");
+            var dropdownBtn = document.getElementById("dropdown-btn");
 
-            let isOpen = false;
+            // Function to show the dropdown
+            function showDropdown() {
+              dropdown.classList.add("show");
+              dropdown.style.opacity = "1"; // Optional: Adjust for smooth animation
+            }
 
-            const dropdownOutsideClick = (ev) => {
-              // Close the dropdown if it is open and the click is outside the button and the dropdown
-              if (isOpen && !dropdown.contains(ev.target) && ev.target !== dropdownBtn) {
-                isOpen = false;
-                closeDropdown();
+            // Function to hide the dropdown
+            function hideDropdown() {
+              dropdown.classList.remove("show");
+              dropdown.style.opacity = "0"; // Optional: Adjust for smooth animation
+            }
+
+            // Toggle the dropdown visibility on button click
+            dropdownBtn.addEventListener("click", function(event) {
+              event.stopPropagation(); // Prevent click event from bubbling
+              if (dropdown.classList.contains("show")) {
+                hideDropdown();
+              } else {
+                showDropdown();
               }
-            };
+            });
 
-            const openDropdown = () => {
-              // Add the open class and remove any close class
-              dropdown.classList.add(DROPDOWN_ANIMATION.open);
-              dropdown.classList.remove(DROPDOWN_ANIMATION.close);
-              dropdown.style.display = 'block'; // Ensure it's visible
-            };
+            // Hide the dropdown if clicking outside of it
+            document.addEventListener("click", function(event) {
+              if (dropdown.classList.contains("show") && !dropdown.contains(event.target) && event.target !== dropdownBtn) {
+                hideDropdown();
+              }
+            });
+          });
 
-            const closeDropdown = () => {
-              // Add the close class and remove the open class
-              dropdown.classList.add(DROPDOWN_ANIMATION.close);
-              dropdown.classList.remove(DROPDOWN_ANIMATION.open);
+        </script>
 
-              // Listen for the animation to finish before hiding
-              dropdown.addEventListener("animationend", () => {
-                if (!isOpen) {
-                  dropdown.style.display = 'none'; // Hide the dropdown after the animation
-                }
-              }, { once: true });
-            };
+      <% end %>
 
-            const toggleDropdown = () => {
-              isOpen = !isOpen;
-              isOpen ? openDropdown() : closeDropdown();
-            };
-
-            dropdownBtn.addEventListener("click", toggleDropdown);
-            document.body.addEventListener("click", dropdownOutsideClick);
-
-          </script>
-
-    </div>
-
-        <% end %>
-
-        <div class="lang"><%= link_to "EN", switch_language_path, class: "link" %></div>
-        <div class="lang"><%= link_to "RO", switch_language_path, class: "link" %></div>
-        <div class="cos"> <%= t(:cos) %> </div>
-        <div class="workshop"> <%= link_to t(:workshop), workshop_path, class: "link" %></div>
-        <div class="about"><%= link_to t(:about), about_path, class: "link" %></div>
-        <div class="contact"><%= link_to t(:contact), contact_path, class: "link" %> </div>
-        <div class="shop"> <%= link_to t(:shop), shop_products_path, class: "link" %></div>
-        <div class="menu"><%= link_to t(:menu), menu_products_path, class: "link" %></div>
-
+      <div class="lang"><%= link_to "EN", switch_language_path, class: "link" %></div>
+      <div class="lang"><%= link_to "RO", switch_language_path, class: "link" %></div>
+      <div class="cos"><%= t(:cos) %></div>
+      <div class="workshop"><%= link_to t(:workshop), workshop_path, class: "link" %></div>
+      <div class="about"><%= link_to t(:about), about_path, class: "link" %></div>
+      <div class="contact"><%= link_to t(:contact), contact_path, class: "link" %></div>
+      <div class="shop"><%= link_to t(:shop), shop_products_path, class: "link" %></div>
+      <div class="menu"><%= link_to t(:menu), menu_products_path, class: "link" %></div>
     </div>
   </div>
 
@@ -115,22 +98,23 @@
         <div class="lang"><%= link_to "RO", switch_language_path, class: "link" %></div>
 
         <% unless user_signed_in? %>
-        <div class="menu">
-          <%= link_to 'LOG IN', new_user_session_path, class: "link" %>
-        </div>
+          <div class="menu">
+            <%= link_to 'LOG IN', new_user_session_path, class: "link" %>
+          </div>
         <% end %>
 
         <% if user_signed_in? %>
-        <div class="menu">
-          <%= link_to 'LOG OUT', destroy_user_session_path, method: :delete, class: "link" %>
-        </div>
+          <div class="menu">
+            <%= link_to 'LOG OUT', destroy_user_session_path, method: :delete, class: "link" %>
+          </div>
         <% end %>
-        <div class="cos"> <%= t(:cos) %> </div>
-        <div class="workshop"> <%= link_to t(:workshop), workshop_path, class: "link" %></div>
+
+        <div class="cos"><%= t(:cos) %></div>
+        <div class="workshop"><%= link_to t(:workshop), workshop_path, class: "link" %></div>
         <div class="about"><%= link_to t(:about), about_path, class: "link" %></div>
-        <div class="contact"><%= link_to t(:contact), contact_path, class: "link" %> </div>
-        <div class="shop"> <%= t(:shop) %></div>
-        <div class="menu"> <%= t(:menu) %> </div>
+        <div class="contact"><%= link_to t(:contact), contact_path, class: "link" %></div>
+        <div class="shop"><%= t(:shop) %></div>
+        <div class="menu"><%= t(:menu) %></div>
       </div>
     </div>
   </div>
