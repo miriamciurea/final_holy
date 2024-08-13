@@ -17,12 +17,12 @@
 
       <% if user_signed_in? %>
         <div class="dropdown">
-          <button id="dropdown-btn" class="dropdown-btn" aria-haspopup="true" aria-expanded="false">
+          <button id="dropdown-btn" class="dropdown-btn"  aria-haspopup="true" aria-expanded="false">
             <div class="link">
               <%= t(:account) %>
             </div>
           </button>
-          <div id="dropdown" class="dropdown-menu" role="menu">
+          <div id="dropdown" class="dropdown-menu"  role="menu">
             <div class="dropdown-header">
               <span>My Account</span>
             </div>
@@ -84,7 +84,6 @@
       <div class="cos"><%= t(:cos) %></div>
       <div class="workshop"><%= link_to t(:workshop), workshop_path, class: "link" %></div>
       <div class="about"><%= link_to t(:about), about_path, class: "link" %></div>
-      <div class="contact"><%= link_to t(:contact), contact_path, class: "link" %></div>
       <div class="shop"><%= link_to t(:shop), shop_products_path, class: "link" %></div>
       <div class="menu"><%= link_to t(:menu), menu_products_path, class: "link" %></div>
     </div>
