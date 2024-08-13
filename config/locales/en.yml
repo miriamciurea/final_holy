@@ -72,3 +72,7 @@ en:
   serving: "SERVING & STORAGE"
   account: "ACCOUNT"
   profile: "PROFILE"
+  workshop_page:
+    title: "WORKSHOP"
+    coming_soon: "COMING SOON"
+    subscribe_message: 'Make sure you <a href="/subscribe" class="link">subscribe</a> to our newsletter!'
