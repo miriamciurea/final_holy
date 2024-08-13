@@ -33,7 +33,10 @@
     <button data-action="click->quantity-selector#increase" id="increase-quantity">+</button>
   </div>
   <button data-action="click->quantity-selector#addToCart" id="add-to-cart" class="button"><%= t(:add_to_cart) %></button>
+
 <div data-quantity-selector-target="sidebar" class="sidebar-2" style="display:none;">
+  <%# <button data-action="click->sidebar#close" class="sidebar-close-button">×</button> %>
+  <div class="sidebar-close-button" data-action="click->sidebar#closeSidebar">×</div>
   <!-- Sidebar content will be dynamically inserted here -->
       <%= render 'sidebar' %>
 </div>

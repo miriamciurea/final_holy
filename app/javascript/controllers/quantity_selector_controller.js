@@ -43,13 +43,17 @@ export default class extends Controller {
         // Update the sidebar with the product details
         if (this.sidebarTarget) {
           this.sidebarTarget.innerHTML = `
-            <div class="sidebar-item">
-              <p>Product ID: ${data.product.id}</p>
-              <p>Quantity: ${data.quantity}</p>
+            <div class="sidebar-content">
+              ${data.cart_items.map(item => `
+                <div class="sidebar-item">
+                  <p>Name: ${item.name}</p>
+                  <p>Quantity: ${item.quantity}</p>
+                </div>
+              `).join('')}
               <p style="display: flex; height: 100%; align-items: end;">Total Items in Cart: ${data.cart_item_count}</p>
             </div>
           `;
-          this.sidebarTarget.style.display = 'block'; // Show the sidebar
+          this.sidebarTarget.style.display = 'block';
         }
         if (this.cartCountTarget) {
           this.cartCountTarget.textContent = data.cart_item_count;
@@ -76,5 +80,15 @@ export default class extends Controller {
     if (this.cartCountTarget) {
       this.cartCountTarget.textContent = value;
     }
+  }
+
+  toggleSidebar() {
+    this.sidebarTarget.classList.toggle('open');
+    this.sidebarTarget.classList.remove('hidden');
+  }
+
+  closeSidebar() {
+    // this.sidebarTarget.classList.remove('open');
+    this.toggleSidebar();
   }
 }

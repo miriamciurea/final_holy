@@ -15,10 +15,12 @@ class CartItemsController < ApplicationController
     @cart_item.quantity = params[:quantity]
 
     if @cart_item.save
+      cart_items = @cart.cart_items.includes(:product) # Include product details if needed
       render json: {
         status: 'success',
         product: @cart_item.product,
         quantity: @cart_item.quantity,
+        cart_items: cart_items.map { |item| { id: item.id, product_id: item.product_id, quantity: item.quantity, name: item.product.name } },
         cart_item_count: @cart.cart_items.count # Include total cart item count for sidebar
       }
     else
