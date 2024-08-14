@@ -26,26 +26,22 @@
       </div>
     </div>
 
-<div class="product" data-controller="quantity-selector" data-product-id="<%= @product.id %>">
-  <div class="quantity-selector">
-    <button data-action="click->quantity-selector#decrease" id="decrease-quantity">-</button>
-    <input type="number" data-quantity-selector-target="quantityInput" value="1" min="1" id="quantity-input" style="width: 50px;">
-    <button data-action="click->quantity-selector#increase" id="increase-quantity">+</button>
-  </div>
-  <button data-action="click->quantity-selector#addToCart" id="add-to-cart" class="button"><%= t(:add_to_cart) %></button>
+    <div class="product" data-controller="quantity-selector" data-product-id="<%= @product.id %>">
+      <div class="quantity-selector">
+        <button data-action="click->quantity-selector#decrease" id="decrease-quantity">-</button>
+        <input type="number" data-quantity-selector-target="quantityInput" value="1" min="1" id="quantity-input" style="width: 50px;">
+        <button data-action="click->quantity-selector#increase" id="increase-quantity">+</button>
+      </div>
+      <button data-action="click->quantity-selector#addToCart" id="add-to-cart" class="button"><%= t(:add_to_cart) %></button>
 
-<div data-quantity-selector-target="sidebar" class="sidebar-2" style="display:none;">
-  <%# <button data-action="click->sidebar#close" class="sidebar-close-button">×</button> %>
-  <div class="sidebar-close-button" data-action="click->sidebar#closeSidebar">×</div>
-  <!-- Sidebar content will be dynamically inserted here -->
-      <%= render 'sidebar' %>
-</div>
-<p data-quantity-selector-target="cartCount" style="display: none;">0</p>
-</div>
-
-
-
-
+      <div data-quantity-selector-target="sidebar" class="sidebar-2" style="display:none;">
+        <%# <button data-action="click->sidebar#close" class="sidebar-close-button">×</button> %>
+        <div class="sidebar-close-button" data-action="click->sidebar#closeSidebar">×</div>
+        <!-- Sidebar content will be dynamically inserted here -->
+            <%= render 'sidebar' %>
+      </div>
+      <p data-quantity-selector-target="cartCount" style="display: none;">0</p>
+    </div>
 
   </div>
 
@@ -78,6 +74,21 @@
 
     </div>
 
+      <div class="admin-actions">
+
+        <% if current_user.admin == true %>
+
+          <%= link_to 'EDIT', edit_product_path(@product), class: 'button', style: "font-size: 1rem;" %>
+
+          <%= form_with(model: @product, method: :delete, local: true) do |form| %>
+            <%= form.submit 'DELETE', class: 'button', style: "font-size: 1rem;" %>
+          <% end %>
+
+        <% end %>
+
+      </div>
+
+
   </div>
 
 </div>
@@ -89,15 +100,6 @@
 
 
 
-
 <div class="products-footer" style="background-image: url(<%= cl_image_path(@product.photos.second.key) %>)">
   <%= render 'components/footer' %>
 </div>
-
-<%= link_to 'Edit', edit_product_path(@product), class: 'edit-link' %>
-
-<%#= link_to 'Delete', product_path(@product), method: :delete, data: { confirm: 'Are you sure you want to delete this product?' }, class: 'delete-link' %>
-
-  <%= form_with(model: @product, method: :delete, local: true) do |form| %>
-    <%= form.submit 'DELETE', class: 'button' %>
-  <% end %>
