@@ -41,39 +41,43 @@
         </div>
 
         <script>
-                document.addEventListener("DOMContentLoaded", function() {
-            var dropdown = document.getElementById("dropdown");
-            var dropdownBtn = document.getElementById("dropdown-btn");
+          document.addEventListener("DOMContentLoaded", function() {
+              var dropdown = document.getElementById("dropdown");
+              var dropdownBtn = document.getElementById("dropdown-btn");
 
-            // Function to show the dropdown
-            function showDropdown() {
-              dropdown.classList.add("show");
-              dropdown.style.opacity = "1"; // Optional: Adjust for smooth animation
-            }
-
-            // Function to hide the dropdown
-            function hideDropdown() {
-              dropdown.classList.remove("show");
-              dropdown.style.opacity = "0"; // Optional: Adjust for smooth animation
-            }
-
-            // Toggle the dropdown visibility on button click
-            dropdownBtn.addEventListener("click", function(event) {
-              event.stopPropagation(); // Prevent click event from bubbling
-              if (dropdown.classList.contains("show")) {
-                hideDropdown();
-              } else {
-                showDropdown();
+              // Function to show the dropdown
+              function showDropdown() {
+                  dropdown.classList.add("show");
+                  dropdown.classList.remove("hide");
               }
-            });
 
-            // Hide the dropdown if clicking outside of it
-            document.addEventListener("click", function(event) {
-              if (dropdown.classList.contains("show") && !dropdown.contains(event.target) && event.target !== dropdownBtn) {
-                hideDropdown();
+               // Ensure dropdown is hidden initially
+              hideDropdown(); // This hides the dropdown on page load
+
+              // Function to hide the dropdown
+              function hideDropdown() {
+                  dropdown.classList.add("hide");
+                  dropdown.classList.remove("show");
               }
-            });
+
+              // Toggle the dropdown visibility on button click
+              dropdownBtn.addEventListener("click", function(event) {
+                  event.stopPropagation(); // Prevent click event from bubbling
+                  if (dropdown.classList.contains("show")) {
+                      hideDropdown();
+                  } else {
+                      showDropdown();
+                  }
+              });
+
+              // Hide the dropdown if clicking outside of it
+              document.addEventListener("click", function(event) {
+                  if (dropdown.classList.contains("show") && !dropdown.contains(event.target) && event.target !== dropdownBtn) {
+                      hideDropdown();
+                  }
+              });
           });
+
 
         </script>
 
@@ -101,6 +105,7 @@
             <%= link_to 'LOG IN', new_user_session_path, class: "link" %>
           </div>
         <% end %>
+
 
         <% if user_signed_in? %>
           <div class="menu">
