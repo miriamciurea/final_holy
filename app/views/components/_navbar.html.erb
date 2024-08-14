@@ -31,6 +31,7 @@
               <% if current_user.admin? %>
                 <%= link_to "ADMIN", admin_users_path(current_user), class: "dropdown-item" %>
               <% end %>
+              <%= link_to t(:cart).upcase, user_cart_path(current_user, current_user.cart), class: "dropdown-item" %>
               <button class="dropdown-item">DASHBOARD</button>
               <button class="dropdown-item">SETTINGS</button>
             </div>

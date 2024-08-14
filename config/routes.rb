@@ -1,18 +1,20 @@
 Rails.application.routes.draw do
   get 'subscriptions/create'
   devise_for :users
+
   resources :users do
     collection do
       get 'admin'
     end
-  end
 
-  resources :carts do
-    member do
-      post 'add_item'
-      delete 'remove_item'
-      patch 'update_quantity'
+    resources :carts do
+      member do
+        post 'add_item'
+        delete 'remove_item'
+        patch 'update_quantity'
+      end
     end
+
   end
 
   resources :cart_items
