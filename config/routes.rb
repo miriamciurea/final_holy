@@ -7,7 +7,15 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :cart_items, only: [:new, :create]
+  resources :carts do
+    member do
+      post 'add_item'
+      delete 'remove_item'
+      patch 'update_quantity'
+    end
+  end
+
+  resources :cart_items
 
   resources :payments
 

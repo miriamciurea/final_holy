@@ -1,7 +1,7 @@
 import { Controller } from "@hotwired/stimulus"
 
 export default class extends Controller {
-  static targets = ["quantityInput", "cartCount", "sidebar"]
+  static targets = ["quantityInput", "cartCount", "sidebar", "overlay"]
 
   connect() {
     console.log("Quantity Selector controller connected");
@@ -54,6 +54,11 @@ export default class extends Controller {
             </div>
           `;
           this.sidebarTarget.style.display = 'block';
+
+          document.body.classList.add('no-scroll');
+          this.overlayTarget.classList.add('active');
+
+
         }
         if (this.cartCountTarget) {
           this.cartCountTarget.textContent = data.cart_item_count;
@@ -83,12 +88,21 @@ export default class extends Controller {
   }
 
   toggleSidebar() {
-    this.sidebarTarget.classList.toggle('open');
-    this.sidebarTarget.classList.remove('hidden');
+    console.log('remove hidden, add open');
+    this.sidebarTarget.style.display = 'none';
+    this.sidebarTarget.classList.add('open');
+    if (this.sidebarTarget.classList.contains('open')) {
+      document.body.classList.add('no-scroll');
+      this.overlayTarget.classList.add('active');
+    } else {
+      this.closeSidebar();
+    }
   }
 
   closeSidebar() {
-    // this.sidebarTarget.classList.remove('open');
-    this.toggleSidebar();
+    console.log('closeSidebar');
+    this.sidebarTarget.style.display = 'none';
+    this.overlayTarget.classList.remove('active');
+    document.body.classList.remove('no-scroll');
   }
 }
