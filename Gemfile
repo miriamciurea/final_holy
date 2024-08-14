@@ -1,6 +1,8 @@
 source "https://rubygems.org"
 
-gem "cloudinary"
+
+gem 'carrierwave'
+gem 'cloudinary'
 
 gem 'activestorage'
 
