@@ -141,6 +141,17 @@
 //   opacity: 1;
 // }
 /* General Styles */
+
+.dropdown.show {
+  display: flex; // Show when open
+  opacity: 1;
+}
+
+.dropdown.hide {
+  display: none; // Hide when closed
+  opacity: 0;
+}
+
 .dropdown {
   position: relative;
   display: inline-block;

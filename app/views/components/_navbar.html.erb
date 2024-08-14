@@ -16,13 +16,13 @@
       <% end %>
 
       <% if user_signed_in? %>
-        <div class="dropdown">
-          <button id="dropdown-btn" class="dropdown-btn"  aria-haspopup="true" aria-expanded="false">
+        <div class="dropdown" data-navbar-target="dropdown">
+          <button id="dropdown-btn" class="dropdown-btn"  aria-haspopup="true" aria-expanded="false" data-action="click->navbar#toggleDropdown">
             <div class="link">
               <%= t(:account) %>
             </div>
           </button>
-          <div id="dropdown" class="dropdown-menu"  role="menu">
+          <div id="dropdown" class="dropdown-menu"  role="menu" data-navbar-target="dropdownMenu">
             <div class="dropdown-header">
               <span>My Account</span>
             </div>
@@ -40,7 +40,7 @@
           </div>
         </div>
 
-        <script>
+        <%# <script>
           document.addEventListener("DOMContentLoaded", function() {
               var dropdown = document.getElementById("dropdown");
               var dropdownBtn = document.getElementById("dropdown-btn");
@@ -79,7 +79,7 @@
           });
 
 
-        </script>
+        </script> %>
 
       <% end %>
 
