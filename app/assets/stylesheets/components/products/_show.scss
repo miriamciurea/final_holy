@@ -106,7 +106,7 @@ input[type="number"] {
   top: 0;
   width: 300px;
   height: 100%;
-  background: rgba(0, 0, 0, 0.5);
+  background: rgba(18, 40, 85, 0.8);
   color: white;
   transition: all 0.3s ease-in-out;
   z-index: 100;
@@ -240,4 +240,40 @@ input[type="number"] {
   .admin-actions {
     justify-content: flex-start;
   }
+}
+
+/* Prevent scrolling when sidebar is open */
+.no-scroll {
+  overflow-y: hidden;
+}
+
+/* Overlay for the dimmed background */
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 10; /* Make sure the overlay is above everything else */
+  display: none;
+}
+
+.overlay.active {
+  display: block;
+}
+
+/* Sidebar styles */
+.sidebar-2.open {
+  /* Adjust the styles here as needed */
+  display: visible;
+}
+
+.sidebar-close-button {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  cursor: pointer;
+  font-size: 24px;
+  z-index: 1002; /* Ensures the button is above the sidebar content */
 }

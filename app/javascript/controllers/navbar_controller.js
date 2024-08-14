@@ -2,7 +2,7 @@ import { Controller } from "@hotwired/stimulus";
 
 // Connects to data-controller="navbar"
 export default class extends Controller {
-  static targets = ["navbar", "icon", "details", "sidebar"]
+  static targets = ["navbar", "icon", "details", "sidebar", "dropdown", "dropdownMenu"]
 
   connect() {
     console.log("Navbar controller connected");
@@ -25,6 +25,8 @@ export default class extends Controller {
 
     // Update visibility on load
     this.updateNavbarVisibility();
+
+    this.hideDropdown();
   }
 
   disconnect() {
@@ -66,6 +68,35 @@ export default class extends Controller {
   closeSidebar() {
     // this.sidebarTarget.classList.remove('open');
     this.toggleSidebar();
+  }
+
+  toggleDropdown(event) {
+    event.stopPropagation();
+    const dropdownMenu = this.dropdownMenuTarget;
+
+    if (dropdownMenu.classList.contains("show")) {
+      this.hideDropdown();
+    } else {
+      this.showDropdown();
+    }
+  }
+
+  showDropdown() {
+    this.dropdownMenuTarget.classList.add("show");
+    this.dropdownMenuTarget.classList.remove("hide");
+    document.addEventListener("click", this.hideDropdownOnClickOutside.bind(this));
+  }
+
+  hideDropdown() {
+    this.dropdownMenuTarget.classList.add("hide");
+    this.dropdownMenuTarget.classList.remove("show");
+    document.removeEventListener("click", this.hideDropdownOnClickOutside.bind(this));
+  }
+
+  hideDropdownOnClickOutside(event) {
+    if (!this.dropdownMenuTarget.contains(event.target) && !this.dropdownTarget.contains(event.target)) {
+      this.hideDropdown();
+    }
   }
 }
 

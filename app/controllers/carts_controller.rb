@@ -1,5 +1,6 @@
 class CartsController < ApplicationController
   before_action :set_cart
+  # , only: [:show, :add_item, :remove_item]
 
   def add_item
     product = Product.find(params[:product_id])
@@ -10,7 +11,9 @@ class CartsController < ApplicationController
   end
 
   def remove_item
+    p 'lets go remove som'
     item = @cart.cart_items.find(params[:id])
+    p 'item.name'
     item.destroy
     redirect_to cart_path
   end
@@ -24,6 +27,8 @@ class CartsController < ApplicationController
   def show
     @cart_items = @cart.cart_items
   end
+
+
 
   private
 
